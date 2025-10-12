@@ -1,0 +1,111 @@
+student_id,student_name,age,school,notes,subject,grade_level,score
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,1,7.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,2,7.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,3,8.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,4,8.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,5,8.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,6,8.7
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,7,8.9
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,8,9.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,9,9.1
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,10,9.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Math,11,9.3
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,1,7.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,2,7.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,3,7.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,4,7.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,5,8.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,6,8.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,7,8.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,8,8.7
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,9,8.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,10,9.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Physics,11,9.1
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,6,7.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,7,7.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,8,7.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,9,7.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,10,8.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Chemistry,11,8.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,1,7.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,2,7.3
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,3,7.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,4,7.6
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,5,7.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,6,7.9
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,7,8.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,8,8.1
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,9,8.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,10,8.3
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,English,11,8.4
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,1,6.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,2,7.0
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,3,7.1
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,4,7.2
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,5,7.3
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,6,7.4
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,7,7.5
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,8,7.6
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,9,7.7
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,10,7.8
+ST001,John Doe,17,ABC High School,Interested in robotics and programming. Active in science club.,Literature,11,7.9
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,1,6.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,2,6.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,3,6.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,4,7.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,5,7.1
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,6,7.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,7,7.3
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,8,7.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,9,7.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,10,7.6
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Math,11,7.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,1,8.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,2,8.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,3,8.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,4,9.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,5,9.1
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,6,9.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,7,9.3
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,8,9.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,9,9.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,10,9.6
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Literature,11,9.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,1,8.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,2,8.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,3,8.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,4,8.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,5,8.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,6,8.9
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,7,9.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,8,9.1
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,9,9.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,10,9.3
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,English,11,9.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,3,9.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,4,9.1
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,5,9.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,6,9.3
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,7,9.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,8,9.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,9,9.6
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,10,9.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Art,11,9.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,1,7.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,2,8.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,3,8.1
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,4,8.2
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,5,8.3
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,6,8.4
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,7,8.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,8,8.6
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,9,8.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,10,8.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,History,11,8.9
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,6,6.5
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,7,6.7
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,8,6.8
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,9,6.9
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,10,7.0
+ST002,Jane Smith,16,XYZ Academy,Loves art and creative writing. Editor of school magazine.,Physics,11,7.1
+

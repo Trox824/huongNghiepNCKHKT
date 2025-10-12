@@ -3,7 +3,7 @@ Logging service for the application.
 """
 import logging
 import streamlit as st
-from config.settings import LOG_FORMAT
+from app.config.settings import LOG_FORMAT
 
 def setup_logger(name="app_logger"):
     """Setup and return a logger instance."""

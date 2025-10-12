@@ -1,0 +1,240 @@
+student_id,student_name,age,school,notes,subject,grade_level,score,semester
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,1,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,1,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,2,8.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,2,9.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,3,8.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,3,9.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,4,9.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,4,9.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,5,9.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,5,9.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,6,9.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,6,9.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,7,9.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,7,9.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,8,9.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,8,9.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,9,9.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,9,9.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,10,9.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,10,9.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,11,9.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Toán,11,9.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,1,7.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,1,7.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,2,7.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,2,7.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,3,7.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,3,7.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,4,7.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,4,8.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,5,7.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,5,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,6,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,6,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,7,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,7,8.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,8,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,8,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,9,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,9,8.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,10,8.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,10,8.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,11,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Ngữ văn,11,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,3,7.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,3,7.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,4,7.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,4,7.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,5,7.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,5,7.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,6,7.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,6,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,7,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,7,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,8,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,8,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,9,8.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,9,8.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,10,8.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,10,9.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,11,9.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tiếng Anh,11,9.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,6,8.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,6,9.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,7,9.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,7,9.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,8,9.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,8,9.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,9,9.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,9,9.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,10,9.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,10,9.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,11,9.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Vật lý,11,9.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,8,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,8,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,9,8.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,9,9.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,10,9.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,10,9.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,11,9.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Hóa học,11,9.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,6,7.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,6,8.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,7,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,7,8.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,8,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,8,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,9,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,9,8.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,10,8.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,10,8.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,11,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Sinh học,11,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,1,7.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,1,7.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,2,7.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,2,7.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,3,7.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,3,7.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,4,7.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,4,7.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,5,7.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,5,7.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,6,7.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,6,7.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,7,7.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,7,7.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,8,7.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,8,7.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,9,7.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,9,8.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,10,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,10,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,11,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Lịch sử,11,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,1,7.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,1,7.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,2,7.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,2,7.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,3,7.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,3,7.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,4,7.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,4,7.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,5,7.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,5,7.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,6,7.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,6,7.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,7,7.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,7,8.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,8,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,8,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,9,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,9,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,10,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,10,8.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,11,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Địa lý,11,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,3,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,3,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,4,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,4,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,5,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,5,8.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,6,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,6,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,7,8.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,7,8.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,8,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,8,8.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,9,8.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,9,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,10,8.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,10,8.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,11,8.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",GDCD,11,8.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,6,9.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,6,9.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,7,9.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,7,9.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,8,9.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,8,9.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,9,9.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,9,9.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,10,9.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,10,9.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,11,9.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Tin học,11,9.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,6,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,6,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,7,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,7,8.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,8,8.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,8,8.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,9,8.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,9,9.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,10,9.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,10,9.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,11,9.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Công nghệ,11,9.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,1,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,1,8.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,2,8.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,2,8.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,3,8.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,3,8.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,4,8.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,4,8.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,5,8.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,5,8.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,6,8.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,6,9.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,7,9.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,7,9.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,8,9.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,8,9.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,9,9.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,9,9.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,10,9.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,10,9.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,11,9.4,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Thể dục,11,9.5,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,1,7.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,1,7.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,2,7.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,2,7.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,3,7.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,3,7.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,4,7.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,4,7.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,5,7.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,5,8.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,6,8.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,6,8.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,7,8.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,7,8.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,8,8.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,8,8.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,9,8.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Âm nhạc,9,8.4,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,1,6.5,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,1,6.6,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,2,6.6,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,2,6.7,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,3,6.7,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,3,6.8,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,4,6.8,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,4,6.9,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,5,6.9,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,5,7.0,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,6,7.0,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,6,7.1,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,7,7.1,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,7,7.2,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,8,7.2,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,8,7.3,2
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,9,7.3,1
+HS001,Nguyễn Văn An,17,Trường THPT Lê Hồng Phong,"Thích toán học và khoa học, tham gia câu lạc bộ robotics, giải nhất olympic toán cấp trường, đam mê công nghệ",Mỹ thuật,9,7.4,2
+
