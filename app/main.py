@@ -1,10 +1,16 @@
 """
 Student Career Guidance System - Main Entry Point
 """
+import sys
+import os
+# Add parent directory to path so 'app' module can be imported
+parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 import streamlit as st
 from app.config.database import init_database, get_db_connection
 from app.services.database_service import DatabaseService
-import os
 
 # Page configuration
 st.set_page_config(

@@ -1,6 +1,13 @@
 """
 Dashboard Page - Visualize grades and Grade 12 predictions
 """
+import sys
+import os
+# Add parent directory to path
+parent_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
