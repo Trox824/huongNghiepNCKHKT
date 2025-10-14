@@ -334,6 +334,9 @@ class DatabaseService:
             )
             grades_created += 1
         
+        # Expire all cached objects to ensure fresh data
+        self.db.expire_all()
+        
         logger.info(f"Imported {len(students_created)} students and {grades_created} grades from {csv_path}")
         return len(students_created)
 

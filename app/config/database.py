@@ -40,7 +40,13 @@ def init_database():
     print("✅ Database tables created successfully")
 
 @st.cache_resource
+def get_session_factory():
+    """Get cached session factory for Streamlit"""
+    return SessionLocal
+
 def get_db_connection():
-    """Get cached database connection for Streamlit"""
-    return SessionLocal()
+    """Get fresh database connection for Streamlit"""
+    # Get or create a new session for this request
+    session_factory = get_session_factory()
+    return session_factory()
 

@@ -224,14 +224,18 @@ with tab3:
             
             if st.button("Import Data", type="primary"):
                 try:
-                    count = db_service.import_students_from_csv(uploaded_file.name)
                     # Save temporarily and import
                     import tempfile
+                    import os
                     with tempfile.NamedTemporaryFile(delete=False, suffix='.csv', mode='wb') as tmp:
                         tmp.write(uploaded_file.getvalue())
                         tmp_path = tmp.name
                     
                     count = db_service.import_students_from_csv(tmp_path)
+                    
+                    # Clean up temp file
+                    os.unlink(tmp_path)
+                    
                     st.success(f" Imported data for {count} student(s)")
                     st.rerun()
                 except Exception as e:
