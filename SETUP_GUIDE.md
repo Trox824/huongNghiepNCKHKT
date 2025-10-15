@@ -253,7 +253,7 @@ Your system is ready for:
 - Career assessments
 - Student guidance
 
-Run `streamlit run app/main.py` to start!
+Run `python3 -m streamlit run app/main.py` to start!
 
 ---
 

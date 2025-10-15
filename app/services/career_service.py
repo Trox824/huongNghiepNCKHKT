@@ -285,7 +285,7 @@ Be specific, supportive, and actionable in your recommendations."""
         
         try:
             response = self.client.beta.chat.completions.parse(
-                model="gpt-4o",
+                model="gpt-4o-mini",
                 messages=[{"role": "user", "content": prompt}],
                 response_format=FinalRecommendation,
                 temperature=0.5

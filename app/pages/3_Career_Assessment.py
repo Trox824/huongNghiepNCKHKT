@@ -15,7 +15,7 @@ from app.services.database_service import DatabaseService
 from app.services.career_service import CareerAssessmentService
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="Career Assessment", page_icon="🎯", layout="wide")
+st.set_page_config(page_title="ĐÁNH GIÁ NGHỀ NGHIỆP", page_icon="🎯", layout="wide")
 
 # Add Font Awesome
 st.markdown("""
@@ -25,8 +25,8 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<h1><i class="fas fa-clipboard-check icon"></i>RIASEC Career Assessment</h1>', unsafe_allow_html=True)
-st.markdown("Evaluate career paths using the Holland Code framework")
+st.markdown('<h1><i class="fas fa-clipboard-check icon"></i>ĐÁNH GIÁ NGHỀ NGHIỆP RIASEC</h1>', unsafe_allow_html=True)
+st.markdown("ĐÁNH GIÁ CON ĐƯỜNG NGHỀ NGHIỆP SỬ DỤNG KHUNG HOLLAND CODE")
 
 # Get database connection
 db = get_db_connection()
@@ -34,14 +34,14 @@ db_service = DatabaseService(db)
 
 # Check if student is selected
 if 'student_id' not in st.session_state or not st.session_state.get('student_id'):
-    st.warning("⚠️ Please select a student from the home page first")
+    st.warning("⚠️ VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
     st.stop()
 
 student_id = st.session_state['student_id']
 student = db_service.get_student(student_id)
 
 if not student:
-    st.error(f"Student {student_id} not found")
+    st.error(f"KHÔNG TÌM THẤY HỌC SINH {student_id}")
     st.stop()
 
 # Get student data
@@ -49,50 +49,50 @@ grades_df = db_service.get_student_grades_df(student_id)
 predictions_df = db_service.get_student_predictions_df(student_id)
 
 if grades_df.empty:
-    st.warning("⚠️ No grade records found. Please add grades first.")
+    st.warning("⚠️ KHÔNG TÌM THẤY BẢN GHI ĐIỂM. VUI LÒNG THÊM ĐIỂM TRƯỚC.")
     st.stop()
 
 if predictions_df.empty:
-    st.warning("⚠️ No predictions found. Please visit Dashboard to generate predictions.")
+    st.warning("⚠️ KHÔNG TÌM THẤY DỰ ĐOÁN. VUI LÒNG VÀO BẢNG ĐIỀU KHIỂN ĐỂ TẠO DỰ ĐOÁN.")
     st.stop()
 
 # Get framework
 framework_df = db_service.get_framework_df()
 
 if framework_df.empty:
-    st.error("⚠️ RIASEC framework not loaded. Please check database.")
+    st.error("⚠️ CHƯA TẢI KHUNG RIASEC. VUI LÒNG KIỂM TRA CƠ SỞ DỮ LIỆU.")
     st.stop()
 
 # Student header
-st.subheader(f"Assessment for: {student.name}")
+st.subheader(f"ĐÁNH GIÁ CHO: {student.name}")
 
 # API Key
-api_key = st.text_input("OpenAI API Key", type="password", 
+api_key = st.text_input("OPENAI API KEY", type="password", 
                        value=st.secrets.get("OPENAI_API_KEY", ""))
 
 if not api_key:
-    st.warning("⚠️ Please provide OpenAI API key")
+    st.warning("⚠️ VUI LÒNG CUNG CẤP OPENAI API KEY")
     st.stop()
 
 # RIASEC explanation
-with st.expander("📖 About RIASEC (Holland Code)"):
+with st.expander("📖 VỀ RIASEC (MÃ HOLLAND)"):
     st.markdown("""
-    The **Holland Code** (RIASEC) is a career interest assessment that categorizes people into six personality types:
+    **MÃ HOLLAND** (RIASEC) LÀ MỘT ĐÁNH GIÁ SỞ THÍCH NGHỀ NGHIỆP PHÂN LOẠI CON NGƯỜI THÀNH SÁU LOẠI TÍNH CÁCH:
     
-    - **R - Realistic**: Practical, hands-on, technical work (Engineers, Mechanics, Builders)
-    - **I - Investigative**: Analytical, scientific, research-oriented (Scientists, Analysts, Researchers)
-    - **A - Artistic**: Creative, expressive, artistic work (Artists, Writers, Designers)
-    - **S - Social**: Helping, teaching, service-oriented (Teachers, Counselors, Healthcare)
-    - **E - Enterprising**: Leadership, persuasion, business (Managers, Entrepreneurs, Sales)
-    - **C - Conventional**: Organized, detail-oriented, systematic (Accountants, Administrators, Analysts)
+    - **R - REALISTIC (THỰC TẾ)**: CÔNG VIỆC THỰC HÀNH, KỸ THUẬT (KỸ SƯ, THỢ MÁY, CÔNG NHÂN XÂY DỰNG)
+    - **I - INVESTIGATIVE (ĐIỀU TRA)**: CÔNG VIỆC PHÂN TÍCH, KHOA HỌC, NGHIÊN CỨU (NHÀ KHOA HỌC, NHÀ PHÂN TÍCH, NHÀ NGHIÊN CỨU)
+    - **A - ARTISTIC (NGHỆ THUẬT)**: CÔNG VIỆC SÁNG TẠO, BIỂU HIỆN (NGHỆ SĨ, NHÀ VĂN, NHÀ THIẾT KẾ)
+    - **S - SOCIAL (XÃ HỘI)**: CÔNG VIỆC GIÚP ĐỠ, DẠY HỌC, PHỤC VỤ (GIÁO VIÊN, CỐ VẤN, Y TẾ)
+    - **E - ENTERPRISING (DOANH NGHIỆP)**: CÔNG VIỆC LÃNH ĐẠO, THUYẾT PHỤC, KINH DOANH (QUẢN LÝ, DOANH NHÂN, BÁN HÀNG)
+    - **C - CONVENTIONAL (TRUYỀN THỐNG)**: CÔNG VIỆC CÓ TỔ CHỨC, CHÚ Ý CHI TIẾT, HỆ THỐNG (KẾ TOÁN, QUẢN TRỊ VIÊN, PHÂN TÍCH VIÊN)
     
-    Your results will show your top 3 codes, which together define your career personality profile.
+    KẾT QUẢ CỦA BẠN SẼ HIỂN THỊ 3 MÃ HÀNG ĐẦU, TẠO THÀNH HỒ SƠ TÍNH CÁCH NGHỀ NGHIỆP CỦA BẠN.
     """)
 
 st.divider()
 
 # Run assessment button
-if st.button("🚀 Start RIASEC Assessment", type="primary", use_container_width=True):
+if st.button("🚀 BẮT ĐẦU ĐÁNH GIÁ RIASEC", type="primary", use_container_width=True):
     
     career_service = CareerAssessmentService(api_key)
     
@@ -110,14 +110,14 @@ if st.button("🚀 Start RIASEC Assessment", type="primary", use_container_width
     )
     
     # Phase 1: Evaluate all questions
-    st.subheader("Phase 1: Question Evaluation")
+    st.subheader("GIAI ĐOẠN 1: ĐÁNH GIÁ CÂU HỎI")
     progress_bar = st.progress(0)
     status_text = st.empty()
     
     total_questions = len(framework_df)
-    status_text.text(f"Evaluating {total_questions} questions...")
+    status_text.text(f"ĐANG ĐÁNH GIÁ {total_questions} CÂU HỎI...")
     
-    with st.spinner("Evaluating questions in parallel..."):
+    with st.spinner("ĐANG ĐÁNH GIÁ CÂU HỎI SONG SONG..."):
         responses = career_service.evaluate_all_questions(
             student.name,
             student_profile,
@@ -126,7 +126,7 @@ if st.button("🚀 Start RIASEC Assessment", type="primary", use_container_width
         )
     
     progress_bar.progress(100)
-    status_text.text(f"✅ Completed {len(responses)} question evaluations")
+    status_text.text(f"✅ ĐÃ HOÀN THÀNH {len(responses)} ĐÁNH GIÁ CÂU HỎI")
     
     # Save responses to database
     db_service.save_assessment_responses(student_id, responses)
@@ -135,9 +135,9 @@ if st.button("🚀 Start RIASEC Assessment", type="primary", use_container_width
     riasec_scores = career_service.calculate_riasec_scores(responses, framework_df)
     
     # Phase 2: Generate final recommendation
-    st.subheader("Phase 2: Final Career Recommendation")
+    st.subheader("GIAI ĐOẠN 2: GỢI Ý NGHỀ NGHIỆP CUỐI CÙNG")
     
-    with st.spinner("Generating personalized career recommendations..."):
+    with st.spinner("ĐANG TẠO GỢI Ý NGHỀ NGHIỆP CÁ NHÂN HÓA..."):
         recommendation = career_service.generate_final_recommendation(
             student.name,
             student_profile,
@@ -155,24 +155,24 @@ if st.button("🚀 Start RIASEC Assessment", type="primary", use_container_width
     st.session_state['recommendation'] = recommendation
     st.session_state['assessment_responses'] = responses
     
-    st.success("✅ Assessment complete!")
+    st.success("✅ ĐÁNH GIÁ HOÀN THÀNH!")
     st.rerun()
 
 # Display results if assessment is complete
 if st.session_state.get('assessment_complete', False):
     
     st.divider()
-    st.header("📊 Assessment Results")
+    st.header("📊 KẾT QUẢ ĐÁNH GIÁ")
     
     riasec_scores = st.session_state.get('riasec_scores', {})
     recommendation = st.session_state.get('recommendation', {})
     responses = st.session_state.get('assessment_responses', [])
     
     # RIASEC Profile Visualization
-    st.subheader("Your RIASEC Profile")
+    st.subheader("HỒ SƠ RIASEC CỦA BẠN")
     
     # Create radar chart
-    categories = ['Realistic', 'Investigative', 'Artistic', 'Social', 'Enterprising', 'Conventional']
+    categories = ['THỰC TẾ', 'ĐIỀU TRA', 'NGHỆ THUẬT', 'XÃ HỘI', 'DOANH NGHIỆP', 'TRUYỀN THỐNG']
     values = [riasec_scores.get(code, 0) for code in ['R', 'I', 'A', 'S', 'E', 'C']]
     
     fig = go.Figure()
@@ -193,7 +193,7 @@ if st.session_state.get('assessment_complete', False):
                 range=[0, 100]
             )),
         showlegend=False,
-        title="RIASEC Personality Profile",
+        title="HỒ SƠ TÍNH CÁCH RIASEC",
         height=500
     )
     
@@ -203,19 +203,19 @@ if st.session_state.get('assessment_complete', False):
         st.plotly_chart(fig, use_container_width=True)
     
     with col2:
-        st.markdown("### Scores")
+        st.markdown("### ĐIỂM SỐ")
         sorted_scores = sorted(riasec_scores.items(), key=lambda x: x[1], reverse=True)
         for code, score in sorted_scores:
-            name = {'R': 'Realistic', 'I': 'Investigative', 'A': 'Artistic',
-                   'S': 'Social', 'E': 'Enterprising', 'C': 'Conventional'}[code]
+            name = {'R': 'THỰC TẾ', 'I': 'ĐIỀU TRA', 'A': 'NGHỆ THUẬT',
+                   'S': 'XÃ HỘI', 'E': 'DOANH NGHIỆP', 'C': 'TRUYỀN THỐNG'}[code]
             st.metric(f"{code} - {name}", f"{score:.1f}/100")
     
     # Career Recommendations
     st.divider()
-    st.subheader("💼 Recommended Career Paths")
+    st.subheader("💼 CON ĐƯỜNG NGHỀ NGHIỆP ĐỀ XUẤT")
     
     riasec_profile = recommendation.get('riasec_profile', '')
-    st.info(f"**Your Holland Code:** {riasec_profile}")
+    st.info(f"**MÃ HOLLAND CỦA BẠN:** {riasec_profile}")
     
     recommended_paths = recommendation.get('recommended_paths', [])
     
@@ -228,17 +228,17 @@ if st.session_state.get('assessment_complete', False):
     # Confidence score
     confidence = recommendation.get('confidence_score', 0.0)
     st.progress(confidence)
-    st.caption(f"Confidence: {confidence:.0%}")
+    st.caption(f"ĐỘ TIN CẬY: {confidence:.0%}")
     
     # Detailed summary
     st.divider()
-    st.subheader("📝 Detailed Analysis")
+    st.subheader("📝 PHÂN TÍCH CHI TIẾT")
     summary = recommendation.get('summary', '')
     st.markdown(summary)
     
     # Question breakdown
     st.divider()
-    st.subheader("📋 Question-by-Question Breakdown")
+    st.subheader("📋 CHI TIẾT TỪNG CÂU HỎI")
     
     # Group responses by RIASEC code
     riasec_groups = {'R': [], 'I': [], 'A': [], 'S': [], 'E': [], 'C': []}
@@ -251,17 +251,17 @@ if st.session_state.get('assessment_complete', False):
     
     # Display by category
     riasec_names = {
-        'R': 'Realistic (Practical/Technical)',
-        'I': 'Investigative (Analytical/Scientific)',
-        'A': 'Artistic (Creative/Expressive)',
-        'S': 'Social (Helpful/Service)',
-        'E': 'Enterprising (Leadership/Business)',
-        'C': 'Conventional (Organized/Systematic)'
+        'R': 'THỰC TẾ (THỰC HÀNH/KỸ THUẬT)',
+        'I': 'ĐIỀU TRA (PHÂN TÍCH/KHOA HỌC)',
+        'A': 'NGHỆ THUẬT (SÁNG TẠO/BIỂU HIỆN)',
+        'S': 'XÃ HỘI (GIÚP ĐỠ/PHỤC VỤ)',
+        'E': 'DOANH NGHIỆP (LÃNH ĐẠO/KINH DOANH)',
+        'C': 'TRUYỀN THỐNG (TỔ CHỨC/HỆ THỐNG)'
     }
     
     for code in ['R', 'I', 'A', 'S', 'E', 'C']:
         if riasec_groups[code]:
-            with st.expander(f"{code} - {riasec_names[code]} ({len(riasec_groups[code])} questions)", expanded=False):
+            with st.expander(f"{code} - {riasec_names[code]} ({len(riasec_groups[code])} CÂU HỎI)", expanded=False):
                 for question_text, resp in riasec_groups[code]:
                     answer_color = {
                         'Yes': '🟢',
@@ -270,9 +270,9 @@ if st.session_state.get('assessment_complete', False):
                         'Error': '⚠️'
                     }.get(resp['answer'], '⚪')
                     
-                    st.markdown(f"**Q:** {question_text}")
-                    st.markdown(f"**A:** {answer_color} {resp['answer']}")
-                    st.markdown(f"*Reasoning:* {resp['reasoning']}")
+                    st.markdown(f"**CÂU HỎI:** {question_text}")
+                    st.markdown(f"**TRẢ LỜI:** {answer_color} {resp['answer']}")
+                    st.markdown(f"*LÝ DO:* {resp['reasoning']}")
                     st.divider()
     
     # Download options
@@ -282,19 +282,19 @@ if st.session_state.get('assessment_complete', False):
     with col1:
         # Download assessment results
         results_data = {
-            'student_name': student.name,
-            'student_id': student_id,
-            'riasec_profile': riasec_profile,
-            'recommended_paths': ', '.join(recommended_paths),
-            'confidence': confidence,
-            **{f'{code}_score': score for code, score in riasec_scores.items()}
+            'ten_hoc_sinh': student.name,
+            'ma_hoc_sinh': student_id,
+            'ho_so_riasec': riasec_profile,
+            'con_duong_de_xuat': ', '.join(recommended_paths),
+            'do_tin_cay': confidence,
+            **{f'diem_{code}': score for code, score in riasec_scores.items()}
         }
         results_df = pd.DataFrame([results_data])
         csv = results_df.to_csv(index=False)
         st.download_button(
-            label="📥 Download Assessment Summary",
+            label="📥 TẢI XUỐNG TÓM TẮT ĐÁNH GIÁ",
             data=csv,
-            file_name=f"riasec_assessment_{student_id}.csv",
+            file_name=f"danh_gia_riasec_{student_id}.csv",
             mime="text/csv"
         )
     
@@ -306,22 +306,22 @@ if st.session_state.get('assessment_complete', False):
             if not question_row.empty:
                 q = question_row.iloc[0]
                 responses_data.append({
-                    'riasec_code': q['riasec_code'],
-                    'category': q['career_category'],
-                    'question': q['question'],
-                    'answer': resp['answer'],
-                    'reasoning': resp['reasoning']
+                    'ma_riasec': q['riasec_code'],
+                    'danh_muc': q['career_category'],
+                    'cau_hoi': q['question'],
+                    'tra_loi': resp['answer'],
+                    'ly_do': resp['reasoning']
                 })
         
         responses_df = pd.DataFrame(responses_data)
         csv = responses_df.to_csv(index=False)
         st.download_button(
-            label="📥 Download Detailed Responses",
+            label="📥 TẢI XUỐNG CÂU TRẢ LỜI CHI TIẾT",
             data=csv,
-            file_name=f"riasec_responses_{student_id}.csv",
+            file_name=f"tra_loi_riasec_{student_id}.csv",
             mime="text/csv"
         )
 
 else:
-    st.info("👆 Click the button above to start the assessment")
+    st.info("👆 NHẤP NÚT BÊN TRÊN ĐỂ BẮT ĐẦU ĐÁNH GIÁ")
 

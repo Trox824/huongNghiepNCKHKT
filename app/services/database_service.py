@@ -70,7 +70,31 @@ class DatabaseService:
     # =====================
     
     def add_grade(self, student_id: str, subject: str, grade_level: int, score: float, semester: Optional[int] = None) -> Grade:
-        """Add a grade record"""
+        """Add a grade record with validation"""
+        # Validate score range
+        if not 0 <= score <= 10:
+            raise ValueError(f"Điểm phải nằm trong khoảng 0-10, nhận được {score}")
+        
+        # Validate grade level
+        if not 1 <= grade_level <= 11:
+            raise ValueError(f"Lớp phải nằm trong khoảng 1-11, nhận được {grade_level}")
+        
+        # Validate semester if provided
+        if semester is not None and semester not in [1, 2]:
+            raise ValueError(f"Học kỳ phải là 1 hoặc 2, nhận được {semester}")
+        
+        # Check for duplicates
+        existing = self.db.query(Grade).filter(
+            Grade.student_id == student_id,
+            Grade.subject == subject,
+            Grade.grade_level == grade_level,
+            Grade.semester == semester
+        ).first()
+        
+        if existing:
+            raise ValueError(f"Điểm đã tồn tại cho {subject} Lớp {grade_level}" + 
+                           (f" Học kỳ {semester}" if semester else ""))
+        
         grade = Grade(
             student_id=student_id,
             subject=subject,
