@@ -277,7 +277,7 @@ if st.session_state.get('assessment_complete', False):
     
     # Download options
     st.divider()
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         # Download assessment results
@@ -321,6 +321,14 @@ if st.session_state.get('assessment_complete', False):
             file_name=f"tra_loi_riasec_{student_id}.csv",
             mime="text/csv"
         )
+    
+    with col3:
+        # Link to AI Chatbot
+        st.markdown("### 🤖 TƯ VẤN THÊM")
+        st.markdown("**Trò chuyện với AI để được tư vấn chi tiết hơn về nghề nghiệp của bạn!**")
+        if st.button("💬 MỞ AI CỐ VẤN", type="primary", use_container_width=True):
+            st.success("✅ Chuyển đến trang AI Cố vấn để trò chuyện!")
+            st.info("💡 AI sẽ sử dụng kết quả RIASEC của bạn để đưa ra lời khuyên cá nhân hóa.")
 
 else:
     st.info("👆 NHẤP NÚT BÊN TRÊN ĐỂ BẮT ĐẦU ĐÁNH GIÁ")

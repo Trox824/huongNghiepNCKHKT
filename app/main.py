@@ -222,7 +222,7 @@ if initialize_app():
     st.divider()
     st.markdown('<h2><i class="fas fa-compass icon"></i>HƯỚNG DẪN ĐIỀU HƯỚNG</h2>', unsafe_allow_html=True)
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3, col4 = st.columns(4)
     
     with col1:
         st.markdown("""
@@ -248,6 +248,15 @@ if initialize_app():
             <i class="fas fa-clipboard-check fa-2x"></i>
             <h3>ĐÁNH GIÁ NGHỀ NGHIỆP</h3>
             <p style="font-size: 0.9rem;">HOÀN THÀNH ĐÁNH GIÁ TÍNH CÁCH RIASEC VÀ NHẬN GỢI Ý</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+    with col4:
+        st.markdown("""
+        <div class="nav-card">
+            <i class="fas fa-robot fa-2x"></i>
+            <h3>AI CỐ VẤN</h3>
+            <p style="font-size: 0.9rem;">TRÒ CHUYỆN VỚI AI ĐỂ ĐƯỢC TƯ VẤN NGHỀ NGHIỆP CÁ NHÂN HÓA</p>
         </div>
         """, unsafe_allow_html=True)
     
