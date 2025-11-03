@@ -17,7 +17,7 @@ from app.services.database_service import DatabaseService
 from app.services.chatbot_service import StudentCareerChatbot, ChatMessage
 import json
 
-st.set_page_config(page_title="AI CỐ VẤN NGHỀ NGHIỆP", page_icon="🤖", layout="centered")
+st.set_page_config(page_title="AI CỐ VẤN NGHỀ NGHIỆP", layout="centered")
 
 # Styling
 st.markdown("""
@@ -39,29 +39,27 @@ db_service = DatabaseService(db)
 
 # Check if student is selected
 if 'student_id' not in st.session_state or not st.session_state.get('student_id'):
-    st.warning("⚠️ Vui lòng chọn học sinh từ trang chủ trước")
+    st.warning("Vui lòng chọn học sinh từ trang chủ trước")
     st.stop()
 
 student_id = st.session_state['student_id']
 student = db_service.get_student(student_id)
 
 if not student:
-    st.error(f"❌ Không tìm thấy học sinh {student_id}")
+    st.error(f"Không tìm thấy học sinh {student_id}")
     st.stop()
 
 # Check if student has completed RIASEC assessment
 recommendation = db_service.get_student_recommendation(student_id)
 if not recommendation:
-    st.warning("⚠️ Bạn chưa hoàn thành đánh giá RIASEC. Vui lòng vào trang 'Đánh giá nghề nghiệp' để thực hiện đánh giá trước.")
+    st.warning("Bạn chưa hoàn thành đánh giá RIASEC. Vui lòng vào trang 'Đánh giá nghề nghiệp' để thực hiện đánh giá trước.")
     st.stop()
 
-# API Key
-api_key = st.text_input("OpenAI API Key", type="password",
-                       value=st.secrets.get("OPENAI_API_KEY", ""),
-                       placeholder="sk-...")
+# API Key from secrets
+api_key = st.secrets.get("OPENAI_API_KEY", "")
 
 if not api_key:
-    st.warning("⚠️ Vui lòng cung cấp OpenAI API Key")
+    st.error("OpenAI API Key chưa được cấu hình. Vui lòng thêm vào .streamlit/secrets.toml")
     st.stop()
 
 # Initialize chatbot
@@ -74,15 +72,15 @@ if 'conversation_history' not in st.session_state:
 
 # Sidebar - Student Info
 with st.sidebar:
-    st.title("🤖 AI Cố Vấn")
+    st.title("AI Cố Vấn")
     st.divider()
 
-    st.subheader("👤 Thông tin học sinh")
+    st.subheader("Thông tin học sinh")
     st.write(f"**{student.name}**")
 
     st.divider()
 
-    st.subheader("📊 Hồ sơ RIASEC")
+    st.subheader("Hồ sơ RIASEC")
     st.metric("Mã Holland", recommendation.riasec_profile)
 
     recommended_paths = json.loads(recommendation.recommended_paths)
@@ -97,7 +95,7 @@ with st.sidebar:
 
     st.divider()
 
-    st.subheader("💡 Câu hỏi gợi ý")
+    st.subheader("Câu hỏi gợi ý")
     suggestions = [
         "Tôi phù hợp với nghề gì nhất?",
         "Làm sao để phát triển kỹ năng?",
@@ -112,12 +110,12 @@ with st.sidebar:
 
     st.divider()
 
-    if st.button("🗑️ Xóa lịch sử trò chuyện", use_container_width=True, type="secondary"):
+    if st.button("Xóa lịch sử trò chuyện", use_container_width=True, type="secondary"):
         st.session_state.conversation_history = []
         st.session_state.chatbot.clear_conversation()
         st.rerun()
 
-    with st.expander("💡 Mẹo sử dụng"):
+    with st.expander("Mẹo sử dụng"):
         st.markdown("""
 **Cách sử dụng:**
 - Hỏi cụ thể và rõ ràng
@@ -132,7 +130,7 @@ with st.sidebar:
 """)
 
 # Main chat area
-st.title("💬 Trò chuyện với AI")
+st.title("Trò chuyện với AI")
 
 # Display conversation history
 if st.session_state.conversation_history:
@@ -149,14 +147,14 @@ if st.session_state.conversation_history:
 else:
     # Welcome message
     with st.chat_message("assistant"):
-        st.write(f"👋 **Xin chào {student.name}!**")
+        st.write(f"**Xin chào {student.name}!**")
         st.write("""
 Tôi là AI Cố vấn nghề nghiệp của bạn. Dựa trên kết quả đánh giá RIASEC, tôi có thể giúp bạn:
 
-- 🎯 Hiểu rõ hơn về tính cách nghề nghiệp
-- 💼 Khám phá các nghề nghiệp phù hợp
-- 📚 Lời khuyên về học tập và phát triển kỹ năng
-- 🚀 Lập kế hoạch nghề nghiệp tương lai
+- Hiểu rõ hơn về tính cách nghề nghiệp
+- Khám phá các nghề nghiệp phù hợp
+- Lời khuyên về học tập và phát triển kỹ năng
+- Lập kế hoạch nghề nghiệp tương lai
 
 Hãy đặt câu hỏi bất kỳ về nghề nghiệp, học tập, hoặc định hướng tương lai!
 """)
@@ -171,7 +169,7 @@ if 'user_input' in st.session_state and st.session_state.user_input:
 
 # Process user input
 if user_input and user_input.strip():
-    with st.spinner("🤖 AI đang suy nghĩ..."):
+    with st.spinner("AI đang suy nghĩ..."):
         try:
             # Generate response
             response = st.session_state.chatbot.generate_response(student_id, user_input)
@@ -193,4 +191,4 @@ if user_input and user_input.strip():
             st.rerun()
 
         except Exception as e:
-            st.error(f"❌ Lỗi: {str(e)}")
+            st.error(f"Lỗi: {str(e)}")

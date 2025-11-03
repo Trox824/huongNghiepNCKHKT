@@ -1,4 +1,4 @@
-# Student Career Guidance System
+# Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT
 
 An AI-powered platform for predicting student academic performance and providing personalized career guidance using the Holland RIASEC framework.
 

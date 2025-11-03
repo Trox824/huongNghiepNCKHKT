@@ -16,7 +16,7 @@ from app.config.database import get_db_connection
 from app.services.database_service import DatabaseService
 from app.services.prediction_service import PredictionService
 
-st.set_page_config(page_title="BẢNG ĐIỀU KHIỂN HỌC TẬP", page_icon="📊", layout="wide")
+st.set_page_config(page_title="BẢNG ĐIỀU KHIỂN HỌC TẬP", layout="wide")
 
 # Add Font Awesome
 st.markdown("""
@@ -35,7 +35,7 @@ db_service = DatabaseService(db)
 
 # Check if student is selected
 if 'student_id' not in st.session_state or not st.session_state.get('student_id'):
-    st.warning("⚠️ VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
+    st.warning("VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
     st.stop()
 
 student_id = st.session_state['student_id']
@@ -49,7 +49,7 @@ if not student:
 grades_df = db_service.get_student_grades_df(student_id)
 
 if grades_df.empty:
-    st.warning("⚠️ KHÔNG TÌM THẤY BẢN GHI ĐIỂM. VUI LÒNG THÊM ĐIỂM Ở TRANG QUẢN LÝ HỌC SINH.")
+    st.warning("KHÔNG TÌM THẤY BẢN GHI ĐIỂM. VUI LÒNG THÊM ĐIỂM Ở TRANG QUẢN LÝ HỌC SINH.")
     st.stop()
 
 # Student header
@@ -184,7 +184,7 @@ if selected_trend:
 st.divider()
 
 # Summary Section
-st.subheader("📊 TÓM TẮT THÀNH TÍCH TỔNG QUÁT")
+st.subheader("TÓM TẮT THÀNH TÍCH TỔNG QUÁT")
 
 # Create summary table
 summary_data = []
@@ -198,7 +198,7 @@ for trend in trends:
             'TRUNG BÌNH HIỆN TẠI (L1-11)': f"{historical_avg:.2f}",
             'DỰ ĐOÁN L12': f"{pred_score:.2f}",
             'THAY ĐỔI': f"{change:+.2f}",
-            'TRẠNG THÁI': '⬆️' if change > 0 else '⬇️' if change < 0 else '➡️'
+            'TRẠNG THÁI': 'TĂNG' if change > 0 else 'GIẢM' if change < 0 else 'ỔN ĐỊNH'
         })
 
 if summary_data:
@@ -236,7 +236,7 @@ if summary_data:
         st.success("**ĐIỂM MẠNH:**")
         if analysis['strong_subjects']:
             for subj in analysis['strong_subjects']:
-                st.markdown(f"✅ {subj}")
+                st.markdown(f"- {subj}")
         else:
             st.markdown("*TIẾP TỤC XÂY DỰNG ĐIỂM MẠNH*")
     
@@ -254,7 +254,7 @@ if predictions:
     predictions_df = pd.DataFrame(predictions)
     csv = predictions_df.to_csv(index=False)
     st.download_button(
-        label="📥 TẢI XUỐNG DỰ ĐOÁN DƯỚI DẠNG CSV",
+        label="TẢI XUỐNG DỰ ĐOÁN DƯỚI DẠNG CSV",
         data=csv,
         file_name=f"du_doan_{student.name}_{student_id}.csv",
         mime="text/csv"

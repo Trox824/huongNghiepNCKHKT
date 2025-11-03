@@ -14,8 +14,7 @@ from app.services.database_service import DatabaseService
 
 # Page configuration
 st.set_page_config(
-    page_title="HỆ THỐNG HƯỚNG NGHIỆP HỌC SINH",
-    page_icon="📊",
+    page_title="Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -81,38 +80,38 @@ def initialize_app():
             framework_path = os.path.join("asset", "RIASEC_Career_Framework.csv")
             if os.path.exists(framework_path):
                 count = db_service.load_framework_from_csv(framework_path)
-                st.success(f"✅ ĐÃ TẢI {count} CÂU HỎI KHUNG RIASEC")
+                st.success(f"✅ Đã tải {count} câu hỏi khung RIASEC")
             else:
-                st.warning("⚠️ KHÔNG TÌM THẤY FILE KHUNG RIASEC")
+                st.warning("⚠️ Không tìm thấy file khung RIASEC")
         
         return True
     except Exception as e:
-        st.error(f"KHỞI TẠO CƠ SỞ DỮ LIỆU THẤT BẠI: {e}")
+        st.error(f"Khởi tạo cơ sở dữ liệu thất bại: {e}")
         return False
 
 # Initialize
 if initialize_app():
     # Title and description
     st.markdown("""
-    <h1><i class="fas fa-graduation-cap icon"></i>HỆ THỐNG HƯỚNG NGHIỆP HỌC SINH</h1>
+    <h1><i class="fas fa-graduation-cap icon"></i>Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT</h1>
     """, unsafe_allow_html=True)
     
     st.markdown("""
-    <h3><i class="fas fa-sparkles icon"></i>CHÀO MỪNG ĐÊN NỀN TẢNG HƯỚNG NGHIỆP SỬ DỤNG TRÍ TUỆ NHÂN TẠO</h3>
+    <h3><i class="fas fa-sparkles icon"></i>Chào mừng đến nền tảng hướng nghiệp sử dụng trí tuệ nhân tạo</h3>
     
     <div class="feature-card">
-        <p><i class="fas fa-chart-line icon"></i><strong>PHÂN TÍCH THÀNH TÍCH HỌC TẬP</strong><br/>
-        THEO DÕI VÀ DỰ ĐOÁN ĐIỂM SỐ CÁC MÔN HỌC BẰNG HỌC MÁY</p>
+        <p><i class="fas fa-chart-line icon"></i><strong>Phân tích thành tích học tập</strong><br/>
+        Theo dõi và dự đoán điểm số các môn học bằng học máy</p>
     </div>
     
     <div class="feature-card">
-        <p><i class="fas fa-user-check icon"></i><strong>ĐÁNH GIÁ NGHỀ NGHIỆP RIASEC</strong><br/>
-        ĐÁNH GIÁ TÍNH CÁCH VÀ SỞ THÍCH SỬ DỤNG KHUNG HOLLAND CODE</p>
+        <p><i class="fas fa-user-check icon"></i><strong>Đánh giá nghề nghiệp RIASEC</strong><br/>
+        Đánh giá tính cách và sở thích sử dụng khung Holland Code</p>
     </div>
     
     <div class="feature-card">
-        <p><i class="fas fa-brain icon"></i><strong>GỢI Ý CÁ NHÂN HÓA</strong><br/>
-        NHẬN GỢI Ý NGHỀ NGHIỆP PHỤC VỤ RIÊNG CHO HỒ SƠ CỦA BẠN</p>
+        <p><i class="fas fa-brain icon"></i><strong>Gợi ý cá nhân hóa</strong><br/>
+        Nhận gợi ý nghề nghiệp phục vụ riêng cho hồ sơ của bạn</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -123,7 +122,7 @@ if initialize_app():
     db_service = DatabaseService(db)
     
     # Student selector
-    st.subheader("CHỌN HOẶC TẠO HỌC SINH")
+    st.subheader("Chọn hoặc tạo học sinh")
     
     col1, col2 = st.columns([3, 1])
     
@@ -132,10 +131,10 @@ if initialize_app():
         
         if students:
             student_options = {f"{s.name} (ID: {s.id})": s.id for s in students}
-            student_options["+ THÊM HỌC SINH MỚI"] = "NEW"
+            student_options["+ Thêm học sinh mới"] = "NEW"
             
             selected = st.selectbox(
-                "CHỌN HỌC SINH:",
+                "Chọn học sinh:",
                 options=list(student_options.keys()),
                 index=0
             )
@@ -149,7 +148,7 @@ if initialize_app():
                 st.session_state['student_id'] = student.id
                 
                 # Display student info
-                st.success(f"ĐÃ TẢI: **{student.name}**")
+                st.success(f"Đã tải: **{student.name}**")
                 
                 # Quick stats
                 grades = db_service.get_student_grades(student.id)
@@ -158,47 +157,47 @@ if initialize_app():
                 
                 col_a, col_b, col_c, col_d = st.columns(4)
                 with col_a:
-                    st.metric("TUỔI", student.age)
+                    st.metric("Tuổi", student.age)
                 with col_b:
-                    st.metric("BẢN GHI ĐIỂM", len(grades))
+                    st.metric("Bản ghi điểm", len(grades))
                 with col_c:
-                    st.metric("DỰ ĐOÁN", len(predictions))
+                    st.metric("Dự đoán", len(predictions))
                 with col_d:
-                    st.metric("ĐÁNH GIÁ", "HOÀN THÀNH" if assessment else "ĐANG CHỜ")
+                    st.metric("Đánh giá", "Hoàn thành" if assessment else "Đang chờ")
                 
-                st.info(f"**TRƯỜNG:** {student.school}")
+                st.info(f"**Trường:** {student.school}")
                 if student.notes:
-                    with st.expander("GHI CHÚ HỌC SINH"):
+                    with st.expander("Ghi chú học sinh"):
                         st.write(student.notes)
         else:
-            st.info("KHÔNG TÌM THẤY HỌC SINH. VUI LÒNG THÊM HỌC SINH MỚI HOẶC NHẬP TỪ CSV.")
+            st.info("Không tìm thấy học sinh. Vui lòng thêm học sinh mới hoặc nhập từ CSV.")
             st.session_state['current_student'] = None
     
     with col2:
-        if st.button("+ HỌC SINH MỚI", use_container_width=True):
+        if st.button("+ Học sinh mới", use_container_width=True):
             st.session_state['show_new_student_form'] = True
     
     # New student form
     if st.session_state.get('show_new_student_form', False):
         st.divider()
-        st.subheader("TẠO HỌC SINH MỚI")
+        st.subheader("Tạo học sinh mới")
         
         with st.form("new_student_form"):
-            new_id = st.text_input("MÃ HỌC SINH*", placeholder="VD: ST001")
-            new_name = st.text_input("HỌ VÀ TÊN*", placeholder="VD: NGUYỄN VĂN A")
-            new_age = st.number_input("TUỔI", min_value=10, max_value=25, value=17)
-            new_school = st.text_input("TRƯỜNG", placeholder="VD: TRƯỜNG THPT ABC")
-            new_notes = st.text_area("GHI CHÚ (HOẠT ĐỘNG NGOẠI KHÓA, SỞ THÍCH, ...)")
+            new_id = st.text_input("Mã học sinh*", placeholder="VD: ST001")
+            new_name = st.text_input("Họ và tên*", placeholder="VD: Nguyễn Văn A")
+            new_age = st.number_input("Tuổi", min_value=10, max_value=25, value=17)
+            new_school = st.text_input("Trường", placeholder="VD: Trường THPT ABC")
+            new_notes = st.text_area("Ghi chú (hoạt động ngoại khóa, sở thích, ...)")
             
             col_submit, col_cancel = st.columns(2)
             with col_submit:
-                submitted = st.form_submit_button("TẠO HỌC SINH", use_container_width=True, type="primary")
+                submitted = st.form_submit_button("Tạo học sinh", use_container_width=True, type="primary")
             with col_cancel:
-                cancelled = st.form_submit_button("HỦY", use_container_width=True)
+                cancelled = st.form_submit_button("Hủy", use_container_width=True)
             
             if submitted:
                 if not new_id or not new_name:
-                    st.error("VUI LÒNG NHẬP MÃ HỌC SINH VÀ TÊN")
+                    st.error("Vui lòng nhập mã học sinh và tên")
                 else:
                     try:
                         student = db_service.create_student(
@@ -208,11 +207,11 @@ if initialize_app():
                             school=new_school,
                             notes=new_notes
                         )
-                        st.success(f"ĐÃ TẠO HỌC SINH: {student.name}")
+                        st.success(f"Đã tạo học sinh: {student.name}")
                         st.session_state['show_new_student_form'] = False
                         st.rerun()
                     except Exception as e:
-                        st.error(f"LỖI KHI TẠO HỌC SINH: {e}")
+                        st.error(f"Lỗi khi tạo học sinh: {e}")
             
             if cancelled:
                 st.session_state['show_new_student_form'] = False
@@ -220,7 +219,7 @@ if initialize_app():
     
     # Navigation guide
     st.divider()
-    st.markdown('<h2><i class="fas fa-compass icon"></i>HƯỚNG DẪN ĐIỀU HƯỚNG</h2>', unsafe_allow_html=True)
+    st.markdown('<h2><i class="fas fa-compass icon"></i>Hướng dẫn điều hướng</h2>', unsafe_allow_html=True)
     
     col1, col2, col3, col4 = st.columns(4)
     
@@ -228,8 +227,8 @@ if initialize_app():
         st.markdown("""
         <div class="nav-card">
             <i class="fas fa-users fa-2x"></i>
-            <h3>QUẢN LÝ HỌC SINH</h3>
-            <p style="font-size: 0.9rem;">THÊM, CHỈNH SỬA, HOẶC NHẬP DỮ LIỆU HỌC SINH VÀ ĐIỂM SỐ</p>
+            <h3>Quản lý học sinh</h3>
+            <p style="font-size: 0.9rem;">Thêm, chỉnh sửa, hoặc nhập dữ liệu học sinh và điểm số</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -237,8 +236,8 @@ if initialize_app():
         st.markdown("""
         <div class="nav-card">
             <i class="fas fa-chart-bar fa-2x"></i>
-            <h3>BẢNG ĐIỀU KHIỂN</h3>
-            <p style="font-size: 0.9rem;">XEM XU HƯỚNG ĐIỂM SỐ VÀ DỰ ĐOÁN LỚP 12</p>
+            <h3>Bảng điều khiển</h3>
+            <p style="font-size: 0.9rem;">Xem xu hướng điểm số và dự đoán lớp 12</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -246,8 +245,8 @@ if initialize_app():
         st.markdown("""
         <div class="nav-card">
             <i class="fas fa-clipboard-check fa-2x"></i>
-            <h3>ĐÁNH GIÁ NGHỀ NGHIỆP</h3>
-            <p style="font-size: 0.9rem;">HOÀN THÀNH ĐÁNH GIÁ TÍNH CÁCH RIASEC VÀ NHẬN GỢI Ý</p>
+            <h3>Đánh giá nghề nghiệp</h3>
+            <p style="font-size: 0.9rem;">Hoàn thành đánh giá tính cách RIASEC và nhận gợi ý</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -255,8 +254,8 @@ if initialize_app():
         st.markdown("""
         <div class="nav-card">
             <i class="fas fa-robot fa-2x"></i>
-            <h3>AI CỐ VẤN</h3>
-            <p style="font-size: 0.9rem;">TRÒ CHUYỆN VỚI AI ĐỂ ĐƯỢC TƯ VẤN NGHỀ NGHIỆP CÁ NHÂN HÓA</p>
+            <h3>AI Cố vấn</h3>
+            <p style="font-size: 0.9rem;">Trò chuyện với AI để được tư vấn nghề nghiệp cá nhân hóa</p>
         </div>
         """, unsafe_allow_html=True)
     
@@ -264,10 +263,10 @@ if initialize_app():
     st.divider()
     st.markdown("""
     <div style='text-align: center; color: gray; padding: 20px;'>
-        <p>HỖ TRỢ BỞI OPENAI GPT-4 • HỌC MÁY HỒI QUY TUYẾN TÍNH • KHUNG RIASEC HOLLAND</p>
+        <p>Hỗ trợ bởi OpenAI GPT-4 • Học máy hồi quy tuyến tính • Khung RIASEC Holland</p>
     </div>
     """, unsafe_allow_html=True)
 
 else:
-    st.error("KHỞI TẠO ỨNG DỤNG THẤT BẠI. VUI LÒNG KIỂM TRA KẾT NỐI CƠ SỞ DỮ LIỆU.")
+    st.error("Khởi tạo ứng dụng thất bại. Vui lòng kiểm tra kết nối cơ sở dữ liệu.")
 

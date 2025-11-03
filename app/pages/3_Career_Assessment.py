@@ -15,7 +15,7 @@ from app.services.database_service import DatabaseService
 from app.services.career_service import CareerAssessmentService
 import plotly.graph_objects as go
 
-st.set_page_config(page_title="ĐÁNH GIÁ NGHỀ NGHIỆP", page_icon="🎯", layout="wide")
+st.set_page_config(page_title="ĐÁNH GIÁ NGHỀ NGHIỆP", layout="wide")
 
 # Add Font Awesome
 st.markdown("""
@@ -34,7 +34,7 @@ db_service = DatabaseService(db)
 
 # Check if student is selected
 if 'student_id' not in st.session_state or not st.session_state.get('student_id'):
-    st.warning("⚠️ VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
+    st.warning("VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
     st.stop()
 
 student_id = st.session_state['student_id']
@@ -49,33 +49,32 @@ grades_df = db_service.get_student_grades_df(student_id)
 predictions_df = db_service.get_student_predictions_df(student_id)
 
 if grades_df.empty:
-    st.warning("⚠️ KHÔNG TÌM THẤY BẢN GHI ĐIỂM. VUI LÒNG THÊM ĐIỂM TRƯỚC.")
+    st.warning("KHÔNG TÌM THẤY BẢN GHI ĐIỂM. VUI LÒNG THÊM ĐIỂM TRƯỚC.")
     st.stop()
 
 if predictions_df.empty:
-    st.warning("⚠️ KHÔNG TÌM THẤY DỰ ĐOÁN. VUI LÒNG VÀO BẢNG ĐIỀU KHIỂN ĐỂ TẠO DỰ ĐOÁN.")
+    st.warning("KHÔNG TÌM THẤY DỰ ĐOÁN. VUI LÒNG VÀO BẢNG ĐIỀU KHIỂN ĐỂ TẠO DỰ ĐOÁN.")
     st.stop()
 
 # Get framework
 framework_df = db_service.get_framework_df()
 
 if framework_df.empty:
-    st.error("⚠️ CHƯA TẢI KHUNG RIASEC. VUI LÒNG KIỂM TRA CƠ SỞ DỮ LIỆU.")
+    st.error("CHƯA TẢI KHUNG RIASEC. VUI LÒNG KIỂM TRA CƠ SỞ DỮ LIỆU.")
     st.stop()
 
 # Student header
 st.subheader(f"ĐÁNH GIÁ CHO: {student.name}")
 
-# API Key
-api_key = st.text_input("OPENAI API KEY", type="password", 
-                       value=st.secrets.get("OPENAI_API_KEY", ""))
+# API Key from secrets
+api_key = st.secrets.get("OPENAI_API_KEY", "")
 
 if not api_key:
-    st.warning("⚠️ VUI LÒNG CUNG CẤP OPENAI API KEY")
+    st.error("OPENAI API KEY chưa được cấu hình. Vui lòng thêm vào .streamlit/secrets.toml")
     st.stop()
 
 # RIASEC explanation
-with st.expander("📖 VỀ RIASEC (MÃ HOLLAND)"):
+with st.expander("VỀ RIASEC (MÃ HOLLAND)"):
     st.markdown("""
     **MÃ HOLLAND** (RIASEC) LÀ MỘT ĐÁNH GIÁ SỞ THÍCH NGHỀ NGHIỆP PHÂN LOẠI CON NGƯỜI THÀNH SÁU LOẠI TÍNH CÁCH:
     
@@ -92,7 +91,7 @@ with st.expander("📖 VỀ RIASEC (MÃ HOLLAND)"):
 st.divider()
 
 # Run assessment button
-if st.button("🚀 BẮT ĐẦU ĐÁNH GIÁ RIASEC", type="primary", use_container_width=True):
+if st.button("BẮT ĐẦU ĐÁNH GIÁ RIASEC", type="primary", use_container_width=True):
     
     career_service = CareerAssessmentService(api_key)
     
@@ -126,7 +125,7 @@ if st.button("🚀 BẮT ĐẦU ĐÁNH GIÁ RIASEC", type="primary", use_contain
         )
     
     progress_bar.progress(100)
-    status_text.text(f"✅ ĐÃ HOÀN THÀNH {len(responses)} ĐÁNH GIÁ CÂU HỎI")
+    status_text.text(f"ĐÃ HOÀN THÀNH {len(responses)} ĐÁNH GIÁ CÂU HỎI")
     
     # Save responses to database
     db_service.save_assessment_responses(student_id, responses)
@@ -155,14 +154,14 @@ if st.button("🚀 BẮT ĐẦU ĐÁNH GIÁ RIASEC", type="primary", use_contain
     st.session_state['recommendation'] = recommendation
     st.session_state['assessment_responses'] = responses
     
-    st.success("✅ ĐÁNH GIÁ HOÀN THÀNH!")
+    st.success("ĐÁNH GIÁ HOÀN THÀNH!")
     st.rerun()
 
 # Display results if assessment is complete
 if st.session_state.get('assessment_complete', False):
     
     st.divider()
-    st.header("📊 KẾT QUẢ ĐÁNH GIÁ")
+    st.header("KẾT QUẢ ĐÁNH GIÁ")
     
     riasec_scores = st.session_state.get('riasec_scores', {})
     recommendation = st.session_state.get('recommendation', {})
@@ -212,7 +211,7 @@ if st.session_state.get('assessment_complete', False):
     
     # Career Recommendations
     st.divider()
-    st.subheader("💼 CON ĐƯỜNG NGHỀ NGHIỆP ĐỀ XUẤT")
+    st.subheader("CON ĐƯỜNG NGHỀ NGHIỆP ĐỀ XUẤT")
     
     riasec_profile = recommendation.get('riasec_profile', '')
     st.info(f"**MÃ HOLLAND CỦA BẠN:** {riasec_profile}")
@@ -263,15 +262,15 @@ if st.session_state.get('assessment_complete', False):
         if riasec_groups[code]:
             with st.expander(f"{code} - {riasec_names[code]} ({len(riasec_groups[code])} CÂU HỎI)", expanded=False):
                 for question_text, resp in riasec_groups[code]:
-                    answer_color = {
-                        'Yes': '🟢',
-                        'Partial': '🟡',
-                        'No': '🔴',
-                        'Error': '⚠️'
-                    }.get(resp['answer'], '⚪')
+                    answer_text = {
+                        'Yes': '[CÓ]',
+                        'Partial': '[PHẦN NÀO]',
+                        'No': '[KHÔNG]',
+                        'Error': '[LỖI]'
+                    }.get(resp['answer'], '[N/A]')
                     
                     st.markdown(f"**CÂU HỎI:** {question_text}")
-                    st.markdown(f"**TRẢ LỜI:** {answer_color} {resp['answer']}")
+                    st.markdown(f"**TRẢ LỜI:** {answer_text} {resp['answer']}")
                     st.markdown(f"*LÝ DO:* {resp['reasoning']}")
                     st.divider()
     
@@ -292,7 +291,7 @@ if st.session_state.get('assessment_complete', False):
         results_df = pd.DataFrame([results_data])
         csv = results_df.to_csv(index=False)
         st.download_button(
-            label="📥 TẢI XUỐNG TÓM TẮT ĐÁNH GIÁ",
+            label="TẢI XUỐNG TÓM TẮT ĐÁNH GIÁ",
             data=csv,
             file_name=f"danh_gia_riasec_{student_id}.csv",
             mime="text/csv"
@@ -316,7 +315,7 @@ if st.session_state.get('assessment_complete', False):
         responses_df = pd.DataFrame(responses_data)
         csv = responses_df.to_csv(index=False)
         st.download_button(
-            label="📥 TẢI XUỐNG CÂU TRẢ LỜI CHI TIẾT",
+            label="TẢI XUỐNG CÂU TRẢ LỜI CHI TIẾT",
             data=csv,
             file_name=f"tra_loi_riasec_{student_id}.csv",
             mime="text/csv"
@@ -324,12 +323,12 @@ if st.session_state.get('assessment_complete', False):
     
     with col3:
         # Link to AI Chatbot
-        st.markdown("### 🤖 TƯ VẤN THÊM")
+        st.markdown("### TƯ VẤN THÊM")
         st.markdown("**Trò chuyện với AI để được tư vấn chi tiết hơn về nghề nghiệp của bạn!**")
-        if st.button("💬 MỞ AI CỐ VẤN", type="primary", use_container_width=True):
-            st.success("✅ Chuyển đến trang AI Cố vấn để trò chuyện!")
-            st.info("💡 AI sẽ sử dụng kết quả RIASEC của bạn để đưa ra lời khuyên cá nhân hóa.")
+        if st.button("MỞ AI CỐ VẤN", type="primary", use_container_width=True):
+            st.success("Chuyển đến trang AI Cố vấn để trò chuyện!")
+            st.info("AI sẽ sử dụng kết quả RIASEC của bạn để đưa ra lời khuyên cá nhân hóa.")
 
 else:
-    st.info("👆 NHẤP NÚT BÊN TRÊN ĐỂ BẮT ĐẦU ĐÁNH GIÁ")
+    st.info("NHẤP NÚT BÊN TRÊN ĐỂ BẮT ĐẦU ĐÁNH GIÁ")
 

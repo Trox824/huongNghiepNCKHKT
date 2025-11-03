@@ -13,7 +13,7 @@ import pandas as pd
 from app.config.database import get_db_connection
 from app.services.database_service import DatabaseService
 
-st.set_page_config(page_title="QUẢN LÝ HỌC SINH", page_icon="📚", layout="wide")
+st.set_page_config(page_title="QUẢN LÝ HỌC SINH", layout="wide")
 
 # Add Font Awesome
 st.markdown("""
@@ -32,7 +32,7 @@ db_service = DatabaseService(db)
 
 # Check if student is selected
 if 'student_id' not in st.session_state or not st.session_state.get('student_id'):
-    st.warning("⚠️ VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
+    st.warning("VUI LÒNG CHỌN HỌC SINH TỪ TRANG CHỦ TRƯỚC")
     st.stop()
 
 student_id = st.session_state['student_id']
@@ -43,7 +43,7 @@ if not student:
     st.stop()
 
 # Tabs for different management functions
-tab1, tab2, tab3 = st.tabs(["✏️ CHỈNH SỬA HỒ SƠ", "📊 QUẢN LÝ ĐIỂM", "📥 NHẬP DỮ LIỆU"])
+tab1, tab2, tab3 = st.tabs(["CHỈNH SỬA HỒ SƠ", "QUẢN LÝ ĐIỂM", "NHẬP DỮ LIỆU"])
 
 # =============================
 # TAB 1: EDIT PROFILE
@@ -59,9 +59,9 @@ with tab1:
         
         col1, col2 = st.columns(2)
         with col1:
-            update_btn = st.form_submit_button("✏️ CẬP NHẬT HỒ SƠ", use_container_width=True, type="primary")
+            update_btn = st.form_submit_button("CẬP NHẬT HỒ SƠ", use_container_width=True, type="primary")
         with col2:
-            delete_btn = st.form_submit_button("🗑️ XÓA HỌC SINH", use_container_width=True)
+            delete_btn = st.form_submit_button("XÓA HỌC SINH", use_container_width=True)
         
         if update_btn:
             try:
@@ -72,7 +72,7 @@ with tab1:
                     school=school,
                     notes=notes
                 )
-                st.success("✅ CẬP NHẬT HỒ SƠ THÀNH CÔNG!")
+                st.success("CẬP NHẬT HỒ SƠ THÀNH CÔNG!")
                 st.rerun()
             except Exception as e:
                 st.error(f"LỖI KHI CẬP NHẬT HỒ SƠ: {e}")
@@ -82,13 +82,13 @@ with tab1:
 
     # Confirm delete
     if st.session_state.get('confirm_delete', False):
-        st.warning(f"⚠️ BẠN CÓ CHẮC CHẮN MUỐN XÓA {student.name}? HÀNH ĐỘNG NÀY SẼ XÓA TẤT CẢ ĐIỂM SỐ, DỰ ĐOÁN VÀ ĐÁNH GIÁ.")
+        st.warning(f"BẠN CÓ CHẮC CHẮN MUỐN XÓA {student.name}? HÀNH ĐỘNG NÀY SẼ XÓA TẤT CẢ ĐIỂM SỐ, DỰ ĐOÁN VÀ ĐÁNH GIÁ.")
         col1, col2 = st.columns(2)
         with col1:
             if st.button("CÓ, XÓA", type="primary"):
                 try:
                     db_service.delete_student(student_id)
-                    st.success("✅ ĐÃ XÓA HỌC SINH")
+                    st.success("ĐÃ XÓA HỌC SINH")
                     st.session_state['student_id'] = None
                     st.session_state['confirm_delete'] = False
                     st.switch_page("app/main.py")
@@ -132,7 +132,7 @@ with tab2:
                             score=score,
                             semester=semester
                         )
-                        st.success(f"✅ ĐÃ THÊM: {subject} LỚP {grade_level} = {score}")
+                        st.success(f"ĐÃ THÊM: {subject} LỚP {grade_level} = {score}")
                         st.rerun()
                     except Exception as e:
                         st.error(f"LỖI KHI THÊM ĐIỂM: {e}")
@@ -162,7 +162,7 @@ with tab2:
         )
         
         # Update button
-        if st.button("💾 LƯU THAY ĐỔI", type="primary"):
+        if st.button("LƯU THAY ĐỔI", type="primary"):
             try:
                 # Compare and update changed rows
                 changes_made = False
@@ -184,7 +184,7 @@ with tab2:
                             changes_made = True
                 
                 if changes_made:
-                    st.success("✅ LƯU THAY ĐỔI THÀNH CÔNG!")
+                    st.success("LƯU THAY ĐỔI THÀNH CÔNG!")
                     st.rerun()
                 else:
                     st.info("KHÔNG PHÁT HIỆN THAY ĐỔI")
@@ -192,11 +192,11 @@ with tab2:
                 st.error(f"LỖI KHI LƯU THAY ĐỔI: {e}")
         
         # Delete grades
-        with st.expander("🗑️ XÓA ĐIỂM"):
+        with st.expander("XÓA ĐIỂM"):
             if st.button("XÓA TẤT CẢ ĐIỂM", type="primary"):
                 try:
                     count = db_service.delete_student_grades(student_id)
-                    st.success(f"✅ ĐÃ XÓA {count} BẢN GHI ĐIỂM")
+                    st.success(f"ĐÃ XÓA {count} BẢN GHI ĐIỂM")
                     st.rerun()
                 except Exception as e:
                     st.error(f"LỖI KHI XÓA ĐIỂM: {e}")
@@ -205,7 +205,7 @@ with tab2:
 # TAB 3: IMPORT DATA
 # =============================
 with tab3:
-    st.subheader("📥 NHẬP DỮ LIỆU HỌC SINH TỪ CSV")
+    st.subheader("NHẬP DỮ LIỆU HỌC SINH TỪ CSV")
     
     st.markdown("""
     ### ĐỊNH DẠNG CSV
@@ -226,7 +226,7 @@ with tab3:
     if uploaded_file:
         try:
             df = pd.read_csv(uploaded_file)
-            st.success(f"✅ ĐÃ TẢI {len(df)} BẢN GHI")
+            st.success(f"ĐÃ TẢI {len(df)} BẢN GHI")
             st.dataframe(df.head(10), use_container_width=True)
             
             if st.button("NHẬP DỮ LIỆU", type="primary"):
@@ -243,7 +243,7 @@ with tab3:
                     # Clean up temp file
                     os.unlink(tmp_path)
                     
-                    st.success(f"✅ ĐÃ NHẬP DỮ LIỆU CHO {count} HỌC SINH")
+                    st.success(f"ĐÃ NHẬP DỮ LIỆU CHO {count} HỌC SINH")
                     st.rerun()
                 except Exception as e:
                     st.error(f"LỖI KHI NHẬP DỮ LIỆU: {e}")
@@ -252,7 +252,7 @@ with tab3:
     
     # Download sample CSV
     st.divider()
-    st.markdown("### 📥 TẢI XUỐNG FILE CSV MẪU")
+    st.markdown("### TẢI XUỐNG FILE CSV MẪU")
     
     # Create sample data with multiple subjects and grade levels
     sample_records = []
