@@ -75,6 +75,24 @@ with st.sidebar:
     st.title("AI Cố Vấn")
     st.divider()
 
+    st.subheader("Tài liệu PDF để tham khảo")
+    uploaded_pdf = st.file_uploader("Tải lên tệp PDF (tùy chọn)", type=["pdf"])
+    col_up1, col_up2 = st.columns(2)
+    with col_up1:
+        if uploaded_pdf is not None and st.button("Sử dụng PDF", use_container_width=True):
+            try:
+                st.session_state.chatbot.ingest_pdf(uploaded_pdf.read(), uploaded_pdf.name)
+                st.success(f"Đã thêm: {uploaded_pdf.name}")
+            except Exception as e:
+                st.error(f"Không thể xử lý PDF: {e}")
+    with col_up2:
+        if st.button("Xóa PDF", use_container_width=True, type="secondary"):
+            st.session_state.chatbot.clear_document()
+            st.info("Đã xóa tài liệu đang dùng")
+    # Show current document status
+    if getattr(st.session_state.chatbot, 'document_name', None):
+        st.caption(f"Đang dùng tài liệu: {st.session_state.chatbot.document_name}")
+
     st.subheader("Thông tin học sinh")
     st.write(f"**{student.name}**")
 

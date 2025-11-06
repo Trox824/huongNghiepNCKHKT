@@ -11,6 +11,13 @@ from app.services.logger import logger
 from app.services.database_service import DatabaseService
 import json
 import streamlit as st
+from io import BytesIO
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+try:
+    from pypdf import PdfReader
+except Exception:
+    PdfReader = None
 
 
 class ChatMessage(BaseModel):
@@ -35,6 +42,11 @@ class StudentCareerChatbot:
         self.client = openai.OpenAI(api_key=api_key)
         self.db_service = db_service
         self.conversation_history: List[ChatMessage] = []
+        # Document QA state
+        self.document_name: Optional[str] = None
+        self.document_chunks: List[str] = []
+        self._vectorizer: Optional[TfidfVectorizer] = None
+        self._tfidf_matrix = None
         
     def get_student_context(self, student_id: str) -> Dict:
         """Get comprehensive student context for chatbot"""
@@ -116,6 +128,11 @@ class StudentCareerChatbot:
             
             # Create system prompt with student context
             system_prompt = self._create_system_prompt(context)
+
+            # If a document is available, retrieve relevant chunks and add to context
+            doc_context = self._retrieve_relevant_context(user_message)
+            if doc_context:
+                system_prompt += "\n\nTHÔNG TIN TỪ TÀI LIỆU ĐÍNH KÈM (ưu tiên trích dẫn):\n" + doc_context
             
             # Prepare conversation for API
             messages = [{"role": "system", "content": system_prompt}]
@@ -147,6 +164,84 @@ class StudentCareerChatbot:
                 message="Xin lỗi, có lỗi xảy ra khi xử lý câu hỏi của bạn. Vui lòng thử lại sau.",
                 confidence=0.0
             )
+
+    def ingest_pdf(self, file_bytes: bytes, filename: str) -> None:
+        """Ingest a PDF file, split into chunks, and build a retrieval index."""
+        try:
+            if PdfReader is None:
+                raise RuntimeError("Thiếu thư viện pypdf. Vui lòng cài đặt 'pypdf'.")
+
+            reader = PdfReader(BytesIO(file_bytes))
+            raw_text_parts: List[str] = []
+            for page in reader.pages:
+                text = page.extract_text() or ""
+                cleaned = " ".join(text.split())
+                if cleaned:
+                    raw_text_parts.append(cleaned)
+
+            full_text = "\n".join(raw_text_parts)
+            chunks = self._chunk_text(full_text, max_chars=1200, overlap=150)
+
+            self.document_name = filename
+            self.document_chunks = chunks
+            self._build_index()
+            logger.info(f"Ingested PDF '{filename}' with {len(chunks)} chunks")
+        except Exception as e:
+            logger.error(f"Error ingesting PDF: {e}")
+            raise
+
+    def clear_document(self) -> None:
+        """Clear current ingested document and index."""
+        self.document_name = None
+        self.document_chunks = []
+        self._vectorizer = None
+        self._tfidf_matrix = None
+        logger.info("Cleared ingested document context")
+
+    def _chunk_text(self, text: str, max_chars: int = 1200, overlap: int = 150) -> List[str]:
+        """Simple recursive chunker by characters with overlap to preserve context."""
+        if not text:
+            return []
+        chunks: List[str] = []
+        start = 0
+        n = len(text)
+        while start < n:
+            end = min(start + max_chars, n)
+            chunk = text[start:end]
+            chunks.append(chunk)
+            if end == n:
+                break
+            start = max(0, end - overlap)
+        return chunks
+
+    def _build_index(self) -> None:
+        """Build TF-IDF index for current document chunks."""
+        if not self.document_chunks:
+            self._vectorizer = None
+            self._tfidf_matrix = None
+            return
+        self._vectorizer = TfidfVectorizer(stop_words='english')
+        self._tfidf_matrix = self._vectorizer.fit_transform(self.document_chunks)
+
+    def _retrieve_relevant_context(self, query: str, top_k: int = 4) -> str:
+        """Retrieve top-k relevant chunks concatenated as context."""
+        try:
+            if not self.document_chunks or self._vectorizer is None or self._tfidf_matrix is None:
+                return ""
+            query_vec = self._vectorizer.transform([query])
+            sims = cosine_similarity(query_vec, self._tfidf_matrix).flatten()
+            if sims.size == 0:
+                return ""
+            top_indices = sims.argsort()[::-1][:top_k]
+            selected = [self.document_chunks[i] for i in top_indices if sims[i] > 0]
+            if not selected:
+                return ""
+            header = f"(Nguồn: {self.document_name})\n"
+            joined = "\n---\n".join(selected)
+            return header + joined
+        except Exception as e:
+            logger.error(f"Error retrieving context: {e}")
+            return ""
     
     def _create_system_prompt(self, context: Dict) -> str:
         """Create comprehensive system prompt with student context"""

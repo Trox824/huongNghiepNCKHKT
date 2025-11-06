@@ -43,7 +43,7 @@ if not student:
     st.stop()
 
 # Tabs for different management functions
-tab1, tab2, tab3 = st.tabs(["CHỈNH SỬA HỒ SƠ", "QUẢN LÝ ĐIỂM", "NHẬP DỮ LIỆU"])
+tab1, tab2 = st.tabs(["CHỈNH SỬA HỒ SƠ", "QUẢN LÝ ĐIỂM"])
 
 # =============================
 # TAB 1: EDIT PROFILE
@@ -200,90 +200,4 @@ with tab2:
                     st.rerun()
                 except Exception as e:
                     st.error(f"LỖI KHI XÓA ĐIỂM: {e}")
-
-# =============================
-# TAB 3: IMPORT DATA
-# =============================
-with tab3:
-    st.subheader("NHẬP DỮ LIỆU HỌC SINH TỪ CSV")
-    
-    st.markdown("""
-    ### ĐỊNH DẠNG CSV
-    FILE CSV CỦA BẠN CẦN CÓ CÁC CỘT SAU:
-    - `student_id`: MÃ HỌC SINH (SẼ SỬ DỤNG HỌC SINH HIỆN TẠI NẾU KHỚP, HOẶC TẠO MỚI)
-    - `student_name`: TÊN HỌC SINH
-    - `age`: TUỔI
-    - `school`: TÊN TRƯỜNG
-    - `notes`: GHI CHÚ BỔ SUNG
-    - `subject`: TÊN MÔN HỌC
-    - `grade_level`: LỚP (1-11)
-    - `score`: ĐIỂM (0-10)
-    - `semester`: (TÙY CHỌN) HỌC KỲ (1 HOẶC 2)
-    """)
-    
-    uploaded_file = st.file_uploader("CHỌN FILE CSV", type=['csv'])
-    
-    if uploaded_file:
-        try:
-            df = pd.read_csv(uploaded_file)
-            st.success(f"ĐÃ TẢI {len(df)} BẢN GHI")
-            st.dataframe(df.head(10), use_container_width=True)
-            
-            if st.button("NHẬP DỮ LIỆU", type="primary"):
-                try:
-                    # Save temporarily and import
-                    import tempfile
-                    import os
-                    with tempfile.NamedTemporaryFile(delete=False, suffix='.csv', mode='wb') as tmp:
-                        tmp.write(uploaded_file.getvalue())
-                        tmp_path = tmp.name
-                    
-                    count = db_service.import_students_from_csv(tmp_path)
-                    
-                    # Clean up temp file
-                    os.unlink(tmp_path)
-                    
-                    st.success(f"ĐÃ NHẬP DỮ LIỆU CHO {count} HỌC SINH")
-                    st.rerun()
-                except Exception as e:
-                    st.error(f"LỖI KHI NHẬP DỮ LIỆU: {e}")
-        except Exception as e:
-            st.error(f"LỖI KHI ĐỌC CSV: {e}")
-    
-    # Download sample CSV
-    st.divider()
-    st.markdown("### TẢI XUỐNG FILE CSV MẪU")
-    
-    # Create sample data with multiple subjects and grade levels
-    sample_records = []
-    subjects = ['TOÁN', 'VẬT LÝ', 'HÓA HỌC', 'ANH VĂN', 'VĂN HỌC']
-    
-    # Generate sample data for grades 9-11 across multiple subjects
-    for subject in subjects:
-        for grade in [9, 10, 11]:
-            # Create varying scores showing improvement
-            base_score = 7.0 + (subjects.index(subject) * 0.3)
-            grade_bonus = (grade - 9) * 0.2
-            score = min(10.0, base_score + grade_bonus + (0.1 * (grade - 9)))
-            
-            sample_records.append({
-                'student_id': student_id,
-                'student_name': student.name,
-                'age': student.age,
-                'school': student.school,
-                'notes': student.notes or 'GHI CHÚ VỀ HỌC SINH TẠI ĐÂY',
-                'subject': subject,
-                'grade_level': grade,
-                'score': round(score, 1)
-            })
-    
-    sample_data = pd.DataFrame(sample_records)
-    
-    csv = sample_data.to_csv(index=False)
-    st.download_button(
-        label="TẢI XUỐNG FILE CSV MẪU",
-        data=csv,
-        file_name=f"mau_du_lieu_hoc_sinh_{student_id}.csv",
-        mime="text/csv"
-    )
 

@@ -9,6 +9,9 @@ if parent_dir not in sys.path:
     sys.path.insert(0, parent_dir)
 
 import streamlit as st
+import pandas as pd
+import tempfile
+import os
 from app.config.database import init_database, get_db_connection
 from app.services.database_service import DatabaseService
 
@@ -93,7 +96,7 @@ def initialize_app():
 if initialize_app():
     # Title and description
     st.markdown("""
-    <h1><i class="fas fa-graduation-cap icon"></i>Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT</h1>
+    <h2><i class="fas fa-graduation-cap icon"></i>Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT</h2>
     """, unsafe_allow_html=True)
     
     st.markdown("""
@@ -176,6 +179,88 @@ if initialize_app():
     with col2:
         if st.button("+ Học sinh mới", use_container_width=True):
             st.session_state['show_new_student_form'] = True
+    
+    # CSV Import Section
+    st.divider()
+    st.subheader("Nhập học sinh từ CSV")
+    
+    with st.expander("📥 Nhập dữ liệu học sinh từ file CSV", expanded=False):
+        st.markdown("""
+        ### Định dạng CSV
+        File CSV của bạn cần có các cột sau:
+        - `student_id`: Mã học sinh (bắt buộc)
+        - `student_name`: Tên học sinh (bắt buộc)
+        - `age`: Tuổi
+        - `school`: Tên trường
+        - `notes`: Ghi chú bổ sung
+        - `subject`: Tên môn học (bắt buộc)
+        - `grade_level`: Lớp (1-11) (bắt buộc)
+        - `score`: Điểm (0-10) (bắt buộc)
+        - `semester`: (Tùy chọn) Học kỳ (1 hoặc 2)
+        """)
+        
+        uploaded_file = st.file_uploader("Chọn file CSV", type=['csv'])
+        
+        if uploaded_file:
+            try:
+                df = pd.read_csv(uploaded_file)
+                st.success(f"Đã tải {len(df)} bản ghi")
+                st.dataframe(df.head(10), use_container_width=True)
+                
+                if st.button("Nhập dữ liệu", type="primary", use_container_width=True):
+                    try:
+                        # Save temporarily and import
+                        with tempfile.NamedTemporaryFile(delete=False, suffix='.csv', mode='wb') as tmp:
+                            tmp.write(uploaded_file.getvalue())
+                            tmp_path = tmp.name
+                        
+                        count = db_service.import_students_from_csv(tmp_path)
+                        
+                        # Clean up temp file
+                        os.unlink(tmp_path)
+                        
+                        st.success(f"✅ Đã nhập dữ liệu cho {count} học sinh")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Lỗi khi nhập dữ liệu: {e}")
+            except Exception as e:
+                st.error(f"Lỗi khi đọc CSV: {e}")
+        
+        # Download sample CSV
+        st.markdown("### Tải xuống file CSV mẫu")
+        
+        # Create sample data
+        sample_records = []
+        subjects = ['TOÁN', 'VẬT LÝ', 'HÓA HỌC', 'ANH VĂN', 'VĂN HỌC']
+        
+        # Generate sample data for grades 9-11 across multiple subjects
+        for subject in subjects:
+            for grade in [9, 10, 11]:
+                base_score = 7.0 + (subjects.index(subject) * 0.3)
+                grade_bonus = (grade - 9) * 0.2
+                score = min(10.0, base_score + grade_bonus + (0.1 * (grade - 9)))
+                
+                sample_records.append({
+                    'student_id': 'ST001',
+                    'student_name': 'Nguyễn Văn A',
+                    'age': 17,
+                    'school': 'Trường THPT ABC',
+                    'notes': 'Ghi chú về học sinh tại đây',
+                    'subject': subject,
+                    'grade_level': grade,
+                    'score': round(score, 1),
+                    'semester': 1
+                })
+        
+        sample_data = pd.DataFrame(sample_records)
+        csv = sample_data.to_csv(index=False)
+        st.download_button(
+            label="📥 Tải xuống file CSV mẫu",
+            data=csv,
+            file_name="mau_du_lieu_hoc_sinh.csv",
+            mime="text/csv",
+            use_container_width=True
+        )
     
     # New student form
     if st.session_state.get('show_new_student_form', False):
