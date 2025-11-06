@@ -83,6 +83,7 @@ Provide:
 
 2. Reasoning: Explain your answer based on the student's grades, performance trends, and notes.
    Be specific and reference actual subjects, grades, or trends.
+   IMPORTANT: Write the reasoning in Vietnamese (Tiếng Việt).
 
 Answer format should be clear and concise."""
         
@@ -262,11 +263,12 @@ Based on ALL the assessment results above, provide:
 1. RIASEC Profile: The top 3 RIASEC codes (already calculated as: {riasec_profile})
 
 2. Recommended Career Paths: Provide 2-3 specific career paths that align with this RIASEC profile.
+   IMPORTANT: Write career paths in Vietnamese (Tiếng Việt).
    Examples based on profiles:
-   - RIE: Engineering, Architecture, Computer Science
-   - IAS: Research Scientist, Data Analyst, Academic
-   - ASE: Graphic Designer, Marketing, Creative Director
-   - SEI: Business Management, Entrepreneurship, Sales
+   - RIE: Kỹ sư, Kiến trúc sư, Khoa học máy tính
+   - IAS: Nhà khoa học nghiên cứu, Nhà phân tích dữ liệu, Giảng viên
+   - ASE: Nhà thiết kế đồ họa, Marketing, Giám đốc sáng tạo
+   - SEI: Quản lý kinh doanh, Khởi nghiệp, Bán hàng
    - etc.
 
 3. Detailed Summary: Write a comprehensive explanation (3-4 paragraphs) covering:
@@ -275,6 +277,7 @@ Based on ALL the assessment results above, provide:
    - How their academic performance supports these recommendations
    - Specific subjects or skills that align with these careers
    - Areas for development or improvement
+   IMPORTANT: Write the summary in Vietnamese (Tiếng Việt).
 
 4. Confidence Score: Provide a confidence score (0-1) based on:
    - Consistency of answers within RIASEC categories
@@ -378,12 +381,12 @@ Grade History (Grades 1-11):
     def _get_riasec_name(self, code: str) -> str:
         """Get full name for RIASEC code"""
         names = {
-            'R': 'Realistic',
-            'I': 'Investigative',
-            'A': 'Artistic',
-            'S': 'Social',
-            'E': 'Enterprising',
-            'C': 'Conventional'
+            'R': 'Thực tế',
+            'I': 'Điều tra',
+            'A': 'Nghệ thuật',
+            'S': 'Xã hội',
+            'E': 'Doanh nghiệp',
+            'C': 'Truyền thống'
         }
         return names.get(code, code)
 
