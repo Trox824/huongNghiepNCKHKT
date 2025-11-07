@@ -253,15 +253,22 @@ Answer format should be clear and concise."""
             confidence = response.get('confidence_score', 0.8)  # Default 0.8 if not provided
             confidence = max(0.0, min(1.0, confidence))  # Clamp to [0, 1]
             
-            # Calculate final score: base_score * confidence
-            # This creates continuous variation:
-            # - Yes with 0.9 confidence = 0.9
-            # - Yes with 0.7 confidence = 0.7
-            # - Partial with 0.8 confidence = 0.4 (0.5 * 0.8)
-            # - Partial with 0.6 confidence = 0.3 (0.5 * 0.6)
+            # Calculate final score with adjusted formula to prevent scores from being too low
+            # Formula: base_score * (0.5 + 0.5 * confidence)
+            # This ensures:
+            # - Yes with 1.0 confidence = 1.0 * (0.5 + 0.5*1.0) = 1.0
+            # - Yes with 0.8 confidence = 1.0 * (0.5 + 0.5*0.8) = 0.9
+            # - Yes with 0.6 confidence = 1.0 * (0.5 + 0.5*0.6) = 0.8
+            # - Yes with 0.4 confidence = 1.0 * (0.5 + 0.5*0.4) = 0.7
+            # - Yes with 0.0 confidence = 1.0 * (0.5 + 0.5*0.0) = 0.5 (minimum 50% for Yes)
+            # - Partial with 1.0 confidence = 0.5 * (0.5 + 0.5*1.0) = 0.5
+            # - Partial with 0.8 confidence = 0.5 * (0.5 + 0.5*0.8) = 0.45
+            # - Partial with 0.6 confidence = 0.5 * (0.5 + 0.5*0.6) = 0.4
             # - No always = 0.0 (regardless of confidence)
             if base_score > 0:
-                final_score = base_score * confidence
+                # Adjusted formula: ensures minimum 50% of base score even with 0 confidence
+                # This prevents scores from being too low while still allowing variation
+                final_score = base_score * (0.5 + 0.5 * confidence)
             else:
                 final_score = 0.0
             
