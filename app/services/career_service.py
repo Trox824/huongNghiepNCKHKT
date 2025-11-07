@@ -14,6 +14,7 @@ class QuestionResponse(BaseModel):
     """Structured response for a single question"""
     answer: Literal["Yes", "No", "Partial"]
     reasoning: str
+    confidence_score: Optional[float] = 0.8  # 0.0-1.0, how confident/strong the evidence is
 
 
 class RIASECScore(BaseModel):
@@ -46,7 +47,8 @@ class CareerAssessmentService:
         student_profile: str,
         question: str,
         question_id: int,
-        riasec_code: str
+        riasec_code: str,
+        framework_metadata: Dict = None
     ) -> Dict:
         """
         Evaluate a single question independently
@@ -59,17 +61,37 @@ class CareerAssessmentService:
             question: The evaluation question
             question_id: Question ID from database
             riasec_code: RIASEC category (R, I, A, S, E, C)
+            framework_metadata: Optional dict with key_subjects, required_grades, description
         
         Returns:
             Dictionary with question_id, answer, reasoning
         """
+        # Build evaluation criteria from framework metadata
+        criteria_text = ""
+        if framework_metadata:
+            key_subjects = framework_metadata.get('key_subjects', '')
+            required_grades = framework_metadata.get('required_grades', '')
+            description = framework_metadata.get('description', '')
+            
+            if key_subjects or required_grades:
+                criteria_text = "\n\nEvaluation Criteria:\n"
+                if key_subjects:
+                    criteria_text += f"- Key Subjects: {key_subjects}\n"
+                if required_grades:
+                    criteria_text += f"- Required Grades: {required_grades}\n"
+                if description:
+                    criteria_text += f"- Description: {description}\n"
+                criteria_text += "\nIMPORTANT: Only answer 'Yes' if the student STRONGLY demonstrates this trait. "
+                criteria_text += "For 'Conventional' (C) questions, be especially discriminating - not all students with good math scores are highly conventional. "
+                criteria_text += "Consider if the student shows a clear PREFERENCE for structured, organized, detail-oriented work beyond just having good grades."
+        
         # Create prompt
         prompt = f"""You are evaluating a student for career guidance using the Holland RIASEC framework.
 
 RIASEC Code: {riasec_code} ({self._get_riasec_name(riasec_code)})
 
 Question: {question}
-
+{criteria_text}
 Student: {student_name}
 {student_profile}
 
@@ -77,12 +99,27 @@ Evaluate this question INDEPENDENTLY (do not consider other questions).
 
 Provide:
 1. Answer: Yes, No, or Partial
-   - Yes: Strong evidence supporting this trait
+   - Yes: STRONG and CLEAR evidence supporting this trait (not just good grades, but actual preference/behavior)
    - No: Little or no evidence for this trait
-   - Partial: Some evidence but not conclusive
+   - Partial: Some evidence but not conclusive or strong enough
 
-2. Reasoning: Explain your answer based on the student's grades, performance trends, and notes.
+2. Confidence Score: A value between 0.0 and 1.0 indicating how strong/confident the evidence is
+   - 0.9-1.0: Very strong evidence, clear indicators
+   - 0.7-0.89: Strong evidence, good indicators
+   - 0.5-0.69: Moderate evidence, some indicators
+   - 0.3-0.49: Weak evidence, few indicators
+   - 0.0-0.29: Very weak or no evidence
+   
+   Consider:
+   - How well the student meets the grade thresholds
+   - Consistency of performance across relevant subjects
+   - Strength of trends (improving vs declining)
+   - Extracurricular activities and notes that support the trait
+   - How clearly the evidence demonstrates the trait vs just meeting minimum requirements
+
+3. Reasoning: Explain your answer based on the student's grades, performance trends, and notes.
    Be specific and reference actual subjects, grades, or trends.
+   For 'Yes' answers, explain why the evidence is STRONG, not just adequate.
    IMPORTANT: Write the reasoning in Vietnamese (Tiếng Việt).
 
 Answer format should be clear and concise."""
@@ -98,12 +135,16 @@ Answer format should be clear and concise."""
             
             parsed = response.choices[0].message.parsed
             
-            logger.info(f"Q{question_id} ({riasec_code}): {parsed.answer}")
+            # Ensure confidence_score is within valid range
+            confidence = max(0.0, min(1.0, parsed.confidence_score if hasattr(parsed, 'confidence_score') and parsed.confidence_score else 0.8))
+            
+            logger.info(f"Q{question_id} ({riasec_code}): {parsed.answer} (confidence: {confidence:.2f})")
             
             return {
                 'question_id': question_id,
                 'answer': parsed.answer,
-                'reasoning': parsed.reasoning
+                'reasoning': parsed.reasoning,
+                'confidence_score': confidence
             }
             
         except Exception as e:
@@ -111,7 +152,8 @@ Answer format should be clear and concise."""
             return {
                 'question_id': question_id,
                 'answer': 'Error',
-                'reasoning': f"Evaluation failed: {str(e)}"
+                'reasoning': f"Evaluation failed: {str(e)}",
+                'confidence_score': 0.0
             }
     
     def evaluate_all_questions(
@@ -142,13 +184,21 @@ Answer format should be clear and concise."""
             futures = {}
             
             for idx, row in framework_df.iterrows():
+                # Prepare framework metadata
+                framework_metadata = {
+                    'key_subjects': row.get('key_subjects', ''),
+                    'required_grades': row.get('required_grades', ''),
+                    'description': row.get('description', '')
+                }
+                
                 future = executor.submit(
                     self.evaluate_single_question,
                     student_name,
                     student_profile,
                     row['question'],
                     int(row['id']),
-                    row['riasec_code']
+                    row['riasec_code'],
+                    framework_metadata
                 )
                 futures[future] = idx
             
@@ -183,22 +233,39 @@ Answer format should be clear and concise."""
         
         riasec_weights = {code: 0.0 for code in riasec_scores.keys()}
         
-        # Calculate weighted scores
+        # Calculate weighted scores with confidence-based continuous scoring
         for response in assessment_responses:
             # Find corresponding question
             question = framework_df[framework_df['id'] == response['question_id']].iloc[0]
             riasec_code = question['riasec_code']
             weight = float(question['weight'])
             
-            # Calculate score contribution
+            # Get base score from answer type
             if response['answer'] == 'Yes':
-                score = 1.0
+                base_score = 1.0
             elif response['answer'] == 'Partial':
-                score = 0.5
+                base_score = 0.5
             else:  # No or Error
-                score = 0.0
+                base_score = 0.0
             
-            riasec_scores[riasec_code] += score * weight
+            # Apply confidence score for continuous variation
+            # Confidence score (0.0-1.0) modulates the base score
+            confidence = response.get('confidence_score', 0.8)  # Default 0.8 if not provided
+            confidence = max(0.0, min(1.0, confidence))  # Clamp to [0, 1]
+            
+            # Calculate final score: base_score * confidence
+            # This creates continuous variation:
+            # - Yes with 0.9 confidence = 0.9
+            # - Yes with 0.7 confidence = 0.7
+            # - Partial with 0.8 confidence = 0.4 (0.5 * 0.8)
+            # - Partial with 0.6 confidence = 0.3 (0.5 * 0.6)
+            # - No always = 0.0 (regardless of confidence)
+            if base_score > 0:
+                final_score = base_score * confidence
+            else:
+                final_score = 0.0
+            
+            riasec_scores[riasec_code] += final_score * weight
             riasec_weights[riasec_code] += weight
         
         # Normalize scores
