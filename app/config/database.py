@@ -34,7 +34,15 @@ def get_db():
 
 def init_database():
     """Initialize database tables"""
-    from app.database.models import Student, Grade, Prediction, Framework, AssessmentResponse, CareerRecommendation
+    from app.database.models import (
+        User,
+        Student,
+        Grade,
+        Prediction,
+        Framework,
+        AssessmentResponse,
+        CareerRecommendation,
+    )
     
     Base.metadata.create_all(bind=engine)
     print("✅ Database tables created successfully")

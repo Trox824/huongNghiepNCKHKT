@@ -23,6 +23,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Authentication guard
+if 'user' not in st.session_state or not st.session_state['user']:
+    st.warning("VUI LÒNG ĐĂNG NHẬP ĐỂ TRUY CẬP TÍNH NĂNG NÀY.")
+    st.switch_page("main.py")
+    st.stop()
+
 st.markdown('<h1><i class="fas fa-users icon"></i>QUẢN LÝ HỌC SINH</h1>', unsafe_allow_html=True)
 st.markdown("QUẢN LÝ HỒ SƠ HỌC SINH VÀ BẢN GHI ĐIỂM")
 
@@ -91,7 +97,7 @@ with tab1:
                     st.success("ĐÃ XÓA HỌC SINH")
                     st.session_state['student_id'] = None
                     st.session_state['confirm_delete'] = False
-                    st.switch_page("app/main.py")
+                    st.switch_page("main.py")
                 except Exception as e:
                     st.error(f"LỖI KHI XÓA HỌC SINH: {e}")
         with col2:

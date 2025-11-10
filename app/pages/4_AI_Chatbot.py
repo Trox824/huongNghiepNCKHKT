@@ -33,6 +33,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Authentication guard
+if 'user' not in st.session_state or not st.session_state['user']:
+    st.warning("Vui lòng đăng nhập để truy cập tính năng này.")
+    st.switch_page("main.py")
+    st.stop()
+
 # Get database connection
 db = get_db_connection()
 db_service = DatabaseService(db)

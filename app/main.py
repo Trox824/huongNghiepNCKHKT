@@ -13,7 +13,9 @@ import pandas as pd
 import tempfile
 import os
 from app.config.database import init_database, get_db_connection
+from app.services.auth_service import AuthService
 from app.services.database_service import DatabaseService
+from app.services.logger import logger
 
 # Page configuration
 st.set_page_config(
@@ -74,6 +76,32 @@ def initialize_app():
     """Initialize database and load framework"""
     try:
         init_database()
+        
+        # Auto-migrate: rename hashed_password to password if needed
+        try:
+            from sqlalchemy import text
+            from app.config.database import engine
+            with engine.connect() as connection:
+                # Check if hashed_password column exists
+                check_query = text("""
+                    SELECT column_name 
+                    FROM information_schema.columns 
+                    WHERE table_name = 'users' 
+                    AND column_name = 'hashed_password'
+                """)
+                result = connection.execute(check_query)
+                if result.fetchone():
+                    # Rename the column
+                    rename_query = text("""
+                        ALTER TABLE users 
+                        RENAME COLUMN hashed_password TO password;
+                    """)
+                    connection.execute(rename_query)
+                    connection.commit()
+                    logger.info("Auto-migrated: renamed hashed_password to password")
+        except Exception as mig_error:
+            logger.warning(f"Migration check failed (may be OK): {mig_error}")
+        
         db = get_db_connection()
         db_service = DatabaseService(db)
         
@@ -92,8 +120,150 @@ def initialize_app():
         st.error(f"Khởi tạo cơ sở dữ liệu thất bại: {e}")
         return False
 
+# =====================
+# AUTH UTILITIES
+# =====================
+
+def ensure_auth_session_state():
+    """Ensure required authentication state variables exist."""
+    if 'user' not in st.session_state:
+        st.session_state['user'] = None
+    if 'auth_mode' not in st.session_state:
+        st.session_state['auth_mode'] = "login"
+
+
+def render_auth_forms(auth_service: AuthService):
+    """Render login and registration forms."""
+    st.markdown("""
+    <style>
+        [data-testid="stSidebar"] {
+            display: none !important;
+        }
+        [data-testid="stSidebarNav"] {
+            display: none !important;
+        }
+        [data-testid="stAppViewContainer"] {
+            margin-left: 0 !important;
+        }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <h2 style="text-align: center;"><i class="fas fa-lock icon"></i>Đăng nhập để sử dụng hệ thống</h2>
+    """, unsafe_allow_html=True)
+    st.info("Vui lòng đăng nhập hoặc tạo tài khoản mới để tiếp tục.")
+
+    auth_mode = st.radio(
+        "Chọn chức năng",
+        options=["Đăng nhập", "Đăng ký"],
+        index=0 if st.session_state.get("auth_mode", "login") == "login" else 1,
+        horizontal=True,
+        key="auth_mode_selector",
+    )
+    st.session_state["auth_mode"] = "login" if auth_mode == "Đăng nhập" else "register"
+
+    if auth_mode == "Đăng nhập":
+        with st.form("login_form", clear_on_submit=False):
+            username = st.text_input("Tên đăng nhập", key="login_username")
+            password = st.text_input("Mật khẩu", type="password", key="login_password")
+            submit = st.form_submit_button("Đăng nhập", type="primary", use_container_width=True)
+
+            if submit:
+                # Strip whitespace from inputs
+                username = username.strip() if username else ""
+                password = password.strip() if password else ""
+                
+                if not username or not password:
+                    st.error("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.")
+                else:
+                    user = auth_service.authenticate_user(username, password)
+                    if user:
+                        st.session_state['user'] = {
+                            "id": user.id,
+                            "username": user.username,
+                            "email": user.email,
+                            "is_admin": user.is_admin,
+                        }
+                        # Reset student selection and forms on new login
+                        st.session_state['student_id'] = None
+                        st.session_state['current_student'] = None
+                        st.session_state['show_new_student_form'] = False
+                        st.success("Đăng nhập thành công! Đang chuyển tiếp...")
+                        st.rerun()
+                    else:
+                        st.error("Tên đăng nhập hoặc mật khẩu không chính xác.")
+    else:
+        with st.form("register_form", clear_on_submit=False):
+            username = st.text_input("Tên đăng nhập*", key="register_username")
+            email = st.text_input("Email", key="register_email")
+            password = st.text_input("Mật khẩu*", type="password", key="register_password")
+            confirm_password = st.text_input("Xác nhận mật khẩu*", type="password", key="register_confirm_password")
+            submit = st.form_submit_button("Đăng ký", type="primary", use_container_width=True)
+
+            if submit:
+                # Strip whitespace from inputs
+                username = username.strip() if username else ""
+                email = email.strip() if email else None
+                password = password.strip() if password else ""
+                confirm_password = confirm_password.strip() if confirm_password else ""
+                
+                if not username or not password or not confirm_password:
+                    st.error("Vui lòng nhập đầy đủ thông tin bắt buộc.")
+                elif len(password) < 6:
+                    st.error("Mật khẩu phải có ít nhất 6 ký tự.")
+                elif password != confirm_password:
+                    st.error("Mật khẩu xác nhận không khớp.")
+                else:
+                    # Check password length and warn if too long (bcrypt limit is 72 bytes)
+                    password_bytes = len(password.encode('utf-8'))
+                    if password_bytes > 72:
+                        st.warning("⚠️ Mật khẩu quá dài (hơn 72 ký tự). Mật khẩu sẽ được cắt ngắn tự động.")
+                    
+                    try:
+                        user = auth_service.create_user(username=username, password=password, email=email)
+                        st.success("Đăng ký thành công! Vui lòng đăng nhập.")
+                        st.session_state['auth_mode'] = "login"
+                        # Clear form keys to reset the form
+                        if 'register_username' in st.session_state:
+                            del st.session_state['register_username']
+                        if 'register_email' in st.session_state:
+                            del st.session_state['register_email']
+                        if 'register_password' in st.session_state:
+                            del st.session_state['register_password']
+                        if 'register_confirm_password' in st.session_state:
+                            del st.session_state['register_confirm_password']
+                        st.rerun()
+                    except ValueError as exc:
+                        st.error(str(exc))
+                    except Exception as exc:
+                        st.error(f"Lỗi khi đăng ký: {str(exc)}")
+                        logger.exception("Registration error")
+
+
 # Initialize
 if initialize_app():
+    # Ensure auth state and create services
+    ensure_auth_session_state()
+    db = get_db_connection()
+    db_service = DatabaseService(db)
+    auth_service = AuthService(db)
+
+    if st.session_state['user']:
+        with st.sidebar:
+            st.markdown(f"### 👋 Xin chào, **{st.session_state['user']['username']}**")
+            st.caption("Bạn đã đăng nhập vào hệ thống hướng nghiệp.")
+            if st.button("Đăng xuất", use_container_width=True):
+                st.session_state['user'] = None
+                st.session_state['student_id'] = None
+                st.session_state['current_student'] = None
+                st.session_state['show_new_student_form'] = False
+                st.success("Đã đăng xuất.")
+                st.rerun()
+
+    if not st.session_state['user']:
+        render_auth_forms(auth_service)
+        st.stop()
+
     # Title and description
     st.markdown("""
     <h2><i class="fas fa-graduation-cap icon"></i>Hệ Thống AI Phân Tích Kết Quả Học Tập và Định Hướng Nghề Nghiệp cho Học Sinh THPT</h2>
@@ -119,10 +289,6 @@ if initialize_app():
     """, unsafe_allow_html=True)
     
     st.divider()
-    
-    # Get database connection
-    db = get_db_connection()
-    db_service = DatabaseService(db)
     
     # Student selector
     st.subheader("Chọn hoặc tạo học sinh")

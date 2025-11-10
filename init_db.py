@@ -65,8 +65,9 @@ def main():
     print("Next steps:")
     print("  1. Run: streamlit run app/main.py")
     print("  2. Open browser at: http://localhost:8501")
-    print("  3. Create students and add grades")
-    print("  4. Run career assessments")
+    print("  3. Đăng ký tài khoản người dùng đầu tiên và đăng nhập")
+    print("  4. Create students and add grades")
+    print("  5. Run career assessments")
     print()
 
 if __name__ == "__main__":

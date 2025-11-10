@@ -26,6 +26,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Authentication guard
+if 'user' not in st.session_state or not st.session_state['user']:
+    st.warning("VUI LÒNG ĐĂNG NHẬP ĐỂ TRUY CẬP TÍNH NĂNG NÀY.")
+    st.switch_page("main.py")
+    st.stop()
+
 st.markdown('<h1><i class="fas fa-chart-line icon"></i>BẢNG ĐIỀU KHIỂN THÀNH TÍCH HỌC TẬP</h1>', unsafe_allow_html=True)
 st.markdown("TRỰC QUAN HÓA XU HƯỚNG ĐIỂM VÀ DỰ ĐOÁN THÀNH TÍCH LỚP 12")
 

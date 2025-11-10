@@ -25,6 +25,12 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# Authentication guard
+if 'user' not in st.session_state or not st.session_state['user']:
+    st.warning("VUI LÒNG ĐĂNG NHẬP ĐỂ TRUY CẬP TÍNH NĂNG NÀY.")
+    st.switch_page("main.py")
+    st.stop()
+
 st.markdown('<h1><i class="fas fa-clipboard-check icon"></i>ĐÁNH GIÁ NGHỀ NGHIỆP RIASEC</h1>', unsafe_allow_html=True)
 st.markdown("ĐÁNH GIÁ CON ĐƯỜNG NGHỀ NGHIỆP SỬ DỤNG KHUNG HOLLAND CODE")
 
