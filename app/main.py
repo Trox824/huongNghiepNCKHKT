@@ -304,10 +304,29 @@ if initialize_app():
     with col1:
         # Get students based on user role
         user = st.session_state['user']
-        students = db_service.get_students_for_user(
-            user_id=user['id'],
-            is_admin=user.get('is_admin', False)
-        )
+        try:
+            # Verify method exists (defensive check for deployment issues)
+            if not hasattr(db_service, 'get_students_for_user'):
+                raise AttributeError(
+                    f"DatabaseService missing 'get_students_for_user' method. "
+                    f"Available methods: {[m for m in dir(db_service) if not m.startswith('_')]}"
+                )
+            students = db_service.get_students_for_user(
+                user_id=user['id'],
+                is_admin=user.get('is_admin', False)
+            )
+        except AttributeError as e:
+            st.error(f"Lỗi hệ thống: {str(e)}")
+            logger.exception("DatabaseService method missing")
+            # Fallback: use get_all_students for admin, empty list for regular users
+            if user.get('is_admin', False) and hasattr(db_service, 'get_all_students'):
+                students = db_service.get_all_students()
+            else:
+                students = []
+        except Exception as e:
+            st.error(f"Lỗi khi tải danh sách học sinh: {str(e)}")
+            logger.exception("Error loading students")
+            students = []
         
         if students:
             student_options = {f"{s.name} (ID: {s.id})": s.id for s in students}
