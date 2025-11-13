@@ -250,8 +250,14 @@ if initialize_app():
 
     if st.session_state['user']:
         with st.sidebar:
-            st.markdown(f"### 👋 Xin chào, **{st.session_state['user']['username']}**")
-            st.caption("Bạn đã đăng nhập vào hệ thống hướng nghiệp.")
+            user = st.session_state['user']
+            st.markdown(f"### 👋 Xin chào, **{user['username']}**")
+            if user.get('is_admin', False):
+                st.markdown("**🔑 Vai trò: Quản trị viên**")
+                st.caption("Bạn có quyền xem tất cả học sinh.")
+            else:
+                st.markdown("**👤 Vai trò: Học sinh**")
+                st.caption("Bạn chỉ có thể xem thông tin của mình.")
             if st.button("Đăng xuất", use_container_width=True):
                 st.session_state['user'] = None
                 st.session_state['student_id'] = None
@@ -296,7 +302,12 @@ if initialize_app():
     col1, col2 = st.columns([3, 1])
     
     with col1:
-        students = db_service.get_all_students()
+        # Get students based on user role
+        user = st.session_state['user']
+        students = db_service.get_students_for_user(
+            user_id=user['id'],
+            is_admin=user.get('is_admin', False)
+        )
         
         if students:
             student_options = {f"{s.name} (ID: {s.id})": s.id for s in students}
@@ -311,33 +322,44 @@ if initialize_app():
             selected_id = student_options[selected]
             
             if selected_id != "NEW":
-                # Load selected student
-                student = db_service.get_student(selected_id)
-                st.session_state['current_student'] = student
-                st.session_state['student_id'] = student.id
+                # Load selected student with access control
+                user = st.session_state['user']
+                student = db_service.get_student_for_user(
+                    student_id=selected_id,
+                    user_id=user['id'],
+                    is_admin=user.get('is_admin', False)
+                )
                 
-                # Display student info
-                st.success(f"Đã tải: **{student.name}**")
-                
-                # Quick stats
-                grades = db_service.get_student_grades(student.id)
-                predictions = db_service.get_student_predictions(student.id)
-                assessment = db_service.get_student_assessments(student.id)
-                
-                col_a, col_b, col_c, col_d = st.columns(4)
-                with col_a:
-                    st.metric("Tuổi", student.age)
-                with col_b:
-                    st.metric("Bản ghi điểm", len(grades))
-                with col_c:
-                    st.metric("Dự đoán", len(predictions))
-                with col_d:
-                    st.metric("Đánh giá", "Hoàn thành" if assessment else "Đang chờ")
-                
-                st.info(f"**Trường:** {student.school}")
-                if student.notes:
-                    with st.expander("Ghi chú học sinh"):
-                        st.write(student.notes)
+                if not student:
+                    st.error("Bạn không có quyền truy cập học sinh này.")
+                    st.session_state['current_student'] = None
+                    st.session_state['student_id'] = None
+                else:
+                    st.session_state['current_student'] = student
+                    st.session_state['student_id'] = student.id
+                    
+                    # Display student info
+                    st.success(f"Đã tải: **{student.name}**")
+                    
+                    # Quick stats
+                    grades = db_service.get_student_grades(student.id)
+                    predictions = db_service.get_student_predictions(student.id)
+                    assessment = db_service.get_student_assessments(student.id)
+                    
+                    col_a, col_b, col_c, col_d = st.columns(4)
+                    with col_a:
+                        st.metric("Tuổi", student.age)
+                    with col_b:
+                        st.metric("Bản ghi điểm", len(grades))
+                    with col_c:
+                        st.metric("Dự đoán", len(predictions))
+                    with col_d:
+                        st.metric("Đánh giá", "Hoàn thành" if assessment else "Đang chờ")
+                    
+                    st.info(f"**Trường:** {student.school}")
+                    if student.notes:
+                        with st.expander("Ghi chú học sinh"):
+                            st.write(student.notes)
         else:
             st.info("Không tìm thấy học sinh. Vui lòng thêm học sinh mới hoặc nhập từ CSV.")
             st.session_state['current_student'] = None
@@ -451,12 +473,17 @@ if initialize_app():
                     st.error("Vui lòng nhập mã học sinh và tên")
                 else:
                     try:
+                        # Link new student to current user (unless admin creating for others)
+                        user = st.session_state['user']
+                        user_id = None if user.get('is_admin', False) else user['id']
+                        
                         student = db_service.create_student(
                             student_id=new_id,
                             name=new_name,
                             age=new_age,
                             school=new_school,
-                            notes=new_notes
+                            notes=new_notes,
+                            user_id=user_id
                         )
                         st.success(f"Đã tạo học sinh: {student.name}")
                         st.session_state['show_new_student_form'] = False

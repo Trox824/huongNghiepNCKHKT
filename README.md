@@ -25,6 +25,13 @@ An AI-powered platform for predicting student academic performance and providing
 - PostgreSQL database for reliable data storage
 - Dynamic subject handling (no hardcoded subjects)
 
+### 🔐 Role-Based Access Control
+
+- **Admin Role**: Can view and manage all student information
+- **Student Role**: Can only view and manage their own information
+- Students are linked to user accounts via `user_id` foreign key
+- Access control enforced across all pages (Student Management, Dashboard, Career Assessment, AI Chatbot)
+
 ### 🤖 AI-Powered Insights
 
 - Two-phase assessment process:
@@ -68,7 +75,20 @@ postgresql://postgres:etJtdOhpsVUCwGoOsDlyXzTsXGNFvAdS@shinkansen.proxy.rlwy.net
 
 The database tables will be created automatically on first run.
 
-### 5. Load RIASEC Framework
+### 5. Run database migration (for role-based access control)
+
+If you're upgrading from an older version, run the migration to add the `user_id` column to the students table:
+
+```bash
+python3 migrate_add_user_id_to_students.py
+```
+
+This migration:
+- Adds `user_id` column to link students to user accounts
+- Creates foreign key constraint
+- Leaves existing students with `user_id = NULL` (admins can see all students)
+
+### 6. Load RIASEC Framework
 
 The RIASEC framework is automatically loaded from `asset/RIASEC_Career_Framework.csv` on first run.
 

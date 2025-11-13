@@ -19,28 +19,55 @@ class DatabaseService:
     # STUDENT OPERATIONS
     # =====================
     
-    def create_student(self, student_id: str, name: str, age: int, school: str, notes: str = "") -> Student:
+    def create_student(self, student_id: str, name: str, age: int, school: str, notes: str = "", user_id: int = None) -> Student:
         """Create a new student"""
         student = Student(
             id=student_id,
             name=name,
             age=age,
             school=school,
-            notes=notes
+            notes=notes,
+            user_id=user_id
         )
         self.db.add(student)
         self.db.commit()
         self.db.refresh(student)
-        logger.info(f"Created student: {student_id} - {name}")
+        logger.info(f"Created student: {student_id} - {name} (user_id: {user_id})")
         return student
     
     def get_student(self, student_id: str) -> Optional[Student]:
         """Get student by ID"""
         return self.db.query(Student).filter(Student.id == student_id).first()
     
+    def get_student_for_user(self, student_id: str, user_id: int, is_admin: bool) -> Optional[Student]:
+        """Get student by ID with access control: admin can access any, regular users only their own"""
+        student = self.get_student(student_id)
+        if not student:
+            return None
+        
+        # Admin can access any student
+        if is_admin:
+            return student
+        
+        # Regular users can only access their own students
+        if student.user_id == user_id:
+            return student
+        
+        # Access denied
+        return None
+    
     def get_all_students(self) -> List[Student]:
         """Get all students"""
         return self.db.query(Student).order_by(Student.name).all()
+    
+    def get_students_for_user(self, user_id: int, is_admin: bool) -> List[Student]:
+        """Get students based on user role: admin sees all, regular users see only their own"""
+        if is_admin:
+            # Admin can see all students
+            return self.db.query(Student).order_by(Student.name).all()
+        else:
+            # Regular users can only see students linked to their account
+            return self.db.query(Student).filter(Student.user_id == user_id).order_by(Student.name).all()
     
     def update_student(self, student_id: str, **kwargs) -> Optional[Student]:
         """Update student information"""
@@ -339,12 +366,15 @@ class DatabaseService:
             if student_id not in students_created:
                 existing = self.get_student(student_id)
                 if not existing:
+                    # Note: CSV import doesn't set user_id - students will be unlinked
+                    # Admins can assign them later if needed
                     self.create_student(
                         student_id=student_id,
                         name=row['student_name'],
                         age=int(row.get('age', 17)),
                         school=row.get('school', 'Unknown'),
-                        notes=row.get('notes', '')
+                        notes=row.get('notes', ''),
+                        user_id=None  # CSV imports don't link to users
                     )
                 students_created.add(student_id)
             

@@ -44,10 +44,17 @@ if 'student_id' not in st.session_state or not st.session_state.get('student_id'
     st.stop()
 
 student_id = st.session_state['student_id']
-student = db_service.get_student(student_id)
+user = st.session_state['user']
+
+# Check access control: admin can access any student, regular users only their own
+student = db_service.get_student_for_user(
+    student_id=student_id,
+    user_id=user['id'],
+    is_admin=user.get('is_admin', False)
+)
 
 if not student:
-    st.error(f"KHÔNG TÌM THẤY HỌC SINH {student_id}")
+    st.error(f"BẠN KHÔNG CÓ QUYỀN TRUY CẬP HỌC SINH NÀY")
     st.stop()
 
 # Get student data

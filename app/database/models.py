@@ -28,6 +28,7 @@ class Student(Base):
     __tablename__ = 'students'
     
     id = Column(String, primary_key=True)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=True)  # Link to user account
     name = Column(String(200), nullable=False)
     age = Column(Integer)
     school = Column(String(200))
@@ -36,13 +37,14 @@ class Student(Base):
     updated_at = Column(DateTime, default=datetime.now, onupdate=datetime.now)
     
     # Relationships
+    user = relationship("User", backref="students")  # Link back to user
     grades = relationship("Grade", back_populates="student", cascade="all, delete-orphan")
     predictions = relationship("Prediction", back_populates="student", cascade="all, delete-orphan")
     assessments = relationship("AssessmentResponse", back_populates="student", cascade="all, delete-orphan")
     recommendations = relationship("CareerRecommendation", back_populates="student", cascade="all, delete-orphan")
     
     def __repr__(self):
-        return f"<Student(id={self.id}, name={self.name})>"
+        return f"<Student(id={self.id}, name={self.name}, user_id={self.user_id})>"
 
 
 class Grade(Base):
